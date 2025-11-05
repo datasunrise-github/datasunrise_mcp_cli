@@ -1,0 +1,14 @@
+{
+  "connect_host": "127.0.0.1",
+  "connect_port": "11000",
+  "connect_protocol": "https",
+  "connect_login": "admin",
+  "connect_password": "password",
+  "rule_name": "test-masking-rule",
+  "instance_name": "postgres-prod",
+  "comment": "Test masking rule for credit card data",
+  "mask_columns": "finance.customers.credit_card,finance.payments.cc_number",
+  "mask_type": "maskLast",
+  "mask_select_only": true,
+  "keep_row_count": true
+}

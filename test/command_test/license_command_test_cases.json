@@ -1,0 +1,64 @@
+[
+  {
+    "description": "license_update_key: valid",
+    "toolName": "license_update_key",
+    "inputArgs": {
+      "key": "XXXX-XXXX-XXXX-XXXX-XXXX-XXXX"
+    },
+    "expectedCliParams": ["-key XXXX-XXXX-XXXX-XXXX-XXXX-XXXX"]
+  },
+  {
+    "description": "license_update_key: with JSON special characters",
+    "toolName": "license_update_key",
+    "inputArgs": {
+      "key": "SE3ZbZAmfCTq3+P7NKeSNUIVpGYAunkhWBpngCcaZ+yVkHpl1iEwmcMDIiEZ2YUAYjbDBikiKCGfXvdv536+Mw==:0:{\"CustomerName\":\"testHostUnlimited\"}"
+    },
+    "expectedCliParams": ["-key SE3ZbZAmfCTq3+P7NKeSNUIVpGYAunkhWBpngCcaZ+yVkHpl1iEwmcMDIiEZ2YUAYjbDBikiKCGfXvdv536+Mw==:0:{"]
+  },
+  {
+    "description": "license_update_key: with curly braces",
+    "toolName": "license_update_key",
+    "inputArgs": {
+      "key": "ABCDEF-1234-5678:0:{Key:Value}"
+    },
+    "expectedCliParams": ["-key ABCDEF-1234-5678:0:{"]
+  },
+  {
+    "description": "license_update_file: valid",
+    "toolName": "license_update_file",
+    "inputArgs": {
+      "file": "/opt/licenses/datasunrise.reg"
+    },
+    "expectedCliParams": ["-file /opt/licenses/datasunrise.reg"]
+  },
+  {
+    "description": "license_update_file: valid, relative path with spaces",
+    "toolName": "license_update_file",
+    "inputArgs": {
+      "file": "./my licenses/license.reg"
+    },
+    "expectedCliParams": ["-file \"./my licenses/license.reg\""]
+  },
+  {
+    "description": "license_show_all: valid (no params)",
+    "toolName": "license_show_all",
+    "inputArgs": {},
+    "expectedCliParams": []
+  },
+  {
+    "description": "license_show_one: valid, string ID",
+    "toolName": "license_show_one",
+    "inputArgs": {
+      "id": "LIC-001-FEATUREA" 
+    },
+    "expectedCliParams": ["-id LIC-001-FEATUREA"]
+  },
+  {
+    "description": "license_delete: valid, numeric ID",
+    "toolName": "license_delete",
+    "inputArgs": {
+      "id": 12345
+    },
+    "expectedCliParams": ["-id 12345"]
+  }
+]

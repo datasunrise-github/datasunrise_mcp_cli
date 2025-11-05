@@ -1,0 +1,74 @@
+[
+  {
+    "description": "tag_add: valid for a Rule",
+    "toolName": "tag_add",
+    "inputArgs": {
+      "name": "Compliance:PCI",
+      "entityType": "Rule",
+      "entityName": "Block_CreditCard_Access"
+    },
+    "expectedCliParams": ["-name Compliance:PCI", "-entityType Rule", "-entityName Block_CreditCard_Access"]
+  },
+  {
+    "description": "tag_add: valid for a Periodic Task with space in entity name",
+    "toolName": "tag_add",
+    "inputArgs": {
+      "name": "Owner:DBA_Team",
+      "entityType": "Periodic Task", 
+      "entityName": "Daily Backup Task"
+    },
+    "expectedCliParams": ["-name Owner:DBA_Team", "-entityType \"Periodic Task\"", "-entityName \"Daily Backup Task\""]
+  },
+  {
+    "description": "tag_update: valid",
+    "toolName": "tag_update",
+    "inputArgs": {
+      "name": "Compliance:PCI",
+      "newName": "Compliance:PCI-DSS_v3.2",
+      "entityType": "Rule",
+      "entityName": "Block_CreditCard_Access"
+    },
+    "expectedCliParams": ["-name Compliance:PCI", "-newName Compliance:PCI-DSS_v3.2", "-entityType Rule", "-entityName Block_CreditCard_Access"]
+  },
+  {
+    "description": "tag_show_for_entity: valid",
+    "toolName": "tag_show_for_entity",
+    "inputArgs": {
+      "entityType": "Rule",
+      "entityName": "Block_CreditCard_Access"
+    },
+    "expectedCliParams": ["-entityType Rule", "-entityName Block_CreditCard_Access"]
+  },
+  {
+    "description": "tag_show_one: valid",
+    "toolName": "tag_show_one",
+    "inputArgs": {
+      "name": "Owner:DBA_Team",
+      "entityType": "Periodic Task",
+      "entityName": "Daily Backup Task"
+    },
+    "expectedCliParams": ["-name Owner:DBA_Team", "-entityType \"Periodic Task\"", "-entityName \"Daily Backup Task\""]
+  },
+  {
+    "description": "tag_show_tagged_entities: valid",
+    "toolName": "tag_show_tagged_entities",
+    "inputArgs": {},
+    "expectedCliParams": []
+  },
+  {
+    "description": "tag_show_untagged_entities: valid",
+    "toolName": "tag_show_untagged_entities",
+    "inputArgs": {},
+    "expectedCliParams": []
+  },
+  {
+    "description": "tag_delete: valid",
+    "toolName": "tag_delete",
+    "inputArgs": {
+      "name": "Compliance:PCI-DSS_v3.2",
+      "entityType": "Rule",
+      "entityName": "Block_CreditCard_Access"
+    },
+    "expectedCliParams": ["-name Compliance:PCI-DSS_v3.2", "-entityType Rule", "-entityName Block_CreditCard_Access"]
+  }
+]

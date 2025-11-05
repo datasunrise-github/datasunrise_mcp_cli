@@ -1,0 +1,15 @@
+{
+  "connect_host": "127.0.0.1",
+  "connect_port": "11000",
+  "connect_protocol": "https",
+  "connect_login": "admin",
+  "connect_password": "password",
+  "rule_name": "test-audit-rule",
+  "instance_name": "postgres-prod",
+  "comment": "Test audit rule for tables containing customer data",
+  "object_groups": "customer-data",
+  "sql_operations": "SELECT,INSERT,UPDATE,DELETE",
+  "log_data": false,
+  "check_next_rule": false,
+  "action": "audit"
+}

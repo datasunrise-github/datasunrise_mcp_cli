@@ -1,0 +1,125 @@
+[
+  {
+    "description": "discovery_group_add: valid, minimal",
+    "toolName": "discovery_group_add",
+    "inputArgs": {
+      "name": "PII_Group"
+    },
+    "expectedCliParams": ["-name PII_Group"],
+    "absentCliParams": ["-securityStandards"]
+  },
+  {
+    "description": "discovery_group_add: valid, with security standards",
+    "toolName": "discovery_group_add",
+    "inputArgs": {
+      "name": "PCI_DSS_Group",
+      "securityStandards": "PCI DSS,HIPAA"
+    },
+    "expectedCliParams": ["-name PCI_DSS_Group", "-securityStandards \"PCI DSS,HIPAA\""]
+  },
+  {
+    "description": "discovery_attribute_add: valid, minimal required",
+    "toolName": "discovery_attribute_add",
+    "inputArgs": {
+      "group": "PII_Group",
+      "name": "SSN_Pattern"
+    },
+    "expectedCliParams": ["-group PII_Group", "-name SSN_Pattern", "-nameSeparator \";\""],
+    "absentCliParams": ["-colNames", "-colType", "-contTemplate", "-min", "-max", "-colNamesCS", "-contTemplateCS", "-fileNameTemplateCS"]
+  },
+  {
+    "description": "discovery_attribute_add: valid, with column names and content template",
+    "toolName": "discovery_attribute_add",
+    "inputArgs": {
+      "group": "PII_Group",
+      "name": "CreditCard_Pattern",
+      "colNames": "CCN;CARD_NUMBER;ACCT_NO",
+      "colType": "STRING",
+      "contTemplate": "^(?:4[0-9]{12}(?:[0-9]{3})?|5[1-5][0-9]{14}|3[47][0-9]{13}|3(?:0[0-5]|[68][0-9])[0-9]{11}|6(?:011|5[0-9]{2})[0-9]{12}|(?:2131|1800|35\\d{3})\\d{11})$",
+      "colNamesCS": true,
+      "contTemplateCS": false
+    },
+    "expectedCliParams": [
+      "-group PII_Group", 
+      "-name CreditCard_Pattern", 
+      "-colNames \"CCN;CARD_NUMBER;ACCT_NO\"", 
+      "-colType STRING", 
+      "-contTemplate \"^(?:4[0-9]{12}(?:[0-9]{3})?|5[1-5][0-9]{14}|3[47][0-9]{13}|3(?:0[0-5]|[68][0-9])[0-9]{11}|6(?:011|5[0-9]{2})[0-9]{12}|(?:2131|1800|35\\d{3})\\d{11})$\"",
+      "-colNamesCS",
+      "-nameSeparator \";\""
+    ],
+    "absentCliParams": ["-contTemplateCS", "-fileNameTemplateCS"]
+  },
+  {
+    "description": "discovery_attribute_add: valid, numeric range",
+    "toolName": "discovery_attribute_add",
+    "inputArgs": {
+      "group": "Financial_Group",
+      "name": "Salary_Range",
+      "colType": "NUMBER",
+      "min": 50000,
+      "max": 200000
+    },
+    "expectedCliParams": ["-group Financial_Group", "-name Salary_Range", "-colType NUMBER", "-min 50000", "-max 200000", "-nameSeparator \";\""],
+    "absentCliParams": ["-colNamesCS", "-contTemplateCS", "-fileNameTemplateCS"]
+  },
+  {
+    "description": "discovery_group_update: valid, new name and standards",
+    "toolName": "discovery_group_update",
+    "inputArgs": {
+      "name": "PII_Group",
+      "newName": "Personally_Identifiable_Info",
+      "securityStandards": "GDPR,CCPA"
+    },
+    "expectedCliParams": ["-name PII_Group", "-newName Personally_Identifiable_Info", "-securityStandards GDPR,CCPA"]
+  },
+  {
+    "description": "discovery_attribute_update: valid, update content template",
+    "toolName": "discovery_attribute_update",
+    "inputArgs": {
+      "group": "Personally_Identifiable_Info",
+      "name": "SSN_Pattern",
+      "contTemplate": "^\\d{3}-\\d{2}-\\d{4}$"
+    },
+    "expectedCliParams": ["-group Personally_Identifiable_Info", "-name SSN_Pattern", "-contTemplate \"^\\d{3}-\\d{2}-\\d{4}$\""]
+  },
+  {
+    "description": "discovery_group_copy: valid, with new name",
+    "toolName": "discovery_group_copy",
+    "inputArgs": {
+      "name": "PCI_DSS_Group",
+      "newName": "PCI_DSS_Group_Copy"
+    },
+    "expectedCliParams": ["-name PCI_DSS_Group", "-newName PCI_DSS_Group_Copy"]
+  },
+  {
+    "description": "discovery_group_show_all: valid",
+    "toolName": "discovery_group_show_all",
+    "inputArgs": {},
+    "expectedCliParams": []
+  },
+  {
+    "description": "discovery_group_show_one: valid",
+    "toolName": "discovery_group_show_one",
+    "inputArgs": {"name": "Personally_Identifiable_Info"},
+    "expectedCliParams": ["-name Personally_Identifiable_Info"]
+  },
+  {
+    "description": "discovery_attribute_show: valid",
+    "toolName": "discovery_attribute_show",
+    "inputArgs": {"group": "Personally_Identifiable_Info", "name": "SSN_Pattern"},
+    "expectedCliParams": ["-group Personally_Identifiable_Info", "-name SSN_Pattern"]
+  },
+  {
+    "description": "discovery_attribute_delete: valid",
+    "toolName": "discovery_attribute_delete",
+    "inputArgs": {"group": "Personally_Identifiable_Info", "name": "CreditCard_Pattern"},
+    "expectedCliParams": ["-group Personally_Identifiable_Info", "-name CreditCard_Pattern"]
+  },
+  {
+    "description": "discovery_group_delete: valid",
+    "toolName": "discovery_group_delete",
+    "inputArgs": {"name": "PCI_DSS_Group_Copy"},
+    "expectedCliParams": ["-name PCI_DSS_Group_Copy"]
+  }
+]

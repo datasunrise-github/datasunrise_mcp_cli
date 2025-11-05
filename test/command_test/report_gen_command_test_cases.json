@@ -1,0 +1,141 @@
+[
+  {
+    "description": "report_gen_add_audit: valid, minimal name only",
+    "toolName": "report_gen_add_audit",
+    "inputArgs": {
+      "name": "MinimalAuditReport"
+    },
+    "expectedCliParams": ["-name MinimalAuditReport", "-enabled", "-generateReport"],
+    "absentCliParams": ["-operationsWithError", "-writeToSyslog"]
+  },
+  {
+    "description": "report_gen_add_audit: valid, with scheduling and output options",
+    "toolName": "report_gen_add_audit",
+    "inputArgs": {
+      "name": "DailyCSVAudit",
+      "enabled": true,
+      "cronExpression": "0 1 * * *",
+      "reportFormat": "CSV",
+      "compressType": "ZIP",
+      "rules": "HighValueAccess,AdminActivity",
+      "instances": "OraclePROD,MSSQL_Finance",
+      "subscribers": "sec_team,audit_dl"
+    },
+    "expectedCliParams": [
+      "-name DailyCSVAudit",
+      "-enabled",
+      "-cronExpression \"0 1 * * *\"",
+      "-generateReport",
+      "-reportFormat CSV",
+      "-compressType ZIP",
+      "-rules \"HighValueAccess,AdminActivity\"",
+      "-instances \"OraclePROD,MSSQL_Finance\"",
+      "-subscribers \"sec_team,audit_dl\""
+    ],
+    "absentCliParams": ["-operationsWithError", "-writeToSyslog", "-startDate", "-endDate"]
+  },
+  {
+    "description": "report_gen_add_audit: valid, booleans explicitly false",
+    "toolName": "report_gen_add_audit",
+    "inputArgs": {
+      "name": "NoFileAudit",
+      "enabled": false,
+      "generateReport": false,
+      "operationsWithError": true,
+      "writeToSyslog": true
+    },
+    "expectedCliParams": ["-name NoFileAudit", "-operationsWithError", "-writeToSyslog"],
+    "absentCliParams": ["-enabled", "-generateReport"]
+  },
+  {
+    "description": "report_gen_add_masking: valid",
+    "toolName": "report_gen_add_masking",
+    "inputArgs": {
+      "name": "MaskingActivityReport"
+    },
+    "expectedCliParams": ["-name MaskingActivityReport"]
+  },
+  {
+    "description": "report_gen_add_security: valid",
+    "toolName": "report_gen_add_security",
+    "inputArgs": {
+      "name": "SecurityAlertsSummary"
+    },
+    "expectedCliParams": ["-name SecurityAlertsSummary"]
+  },
+  {
+    "description": "report_gen_add_operation_errors: valid",
+    "toolName": "report_gen_add_operation_errors",
+    "inputArgs": {
+      "name": "DB_Error_Log"
+    },
+    "expectedCliParams": ["-name DB_Error_Log"]
+  },
+  {
+    "description": "report_gen_add_session: valid, all sessions type (inst omitted)",
+    "toolName": "report_gen_add_session",
+    "inputArgs": {
+      "name": "AllSessionReport"
+    },
+    "expectedCliParams": ["-name AllSessionReport"],
+    "absentCliParams": ["-inst"]
+  },
+  {
+    "description": "report_gen_add_direct_session: valid, with instance",
+    "toolName": "report_gen_add_direct_session",
+    "inputArgs": {
+      "name": "DirectUserSessions_Oracle",
+      "inst": "OraclePROD"
+    },
+    "expectedCliParams": ["-name DirectUserSessions_Oracle", "-inst OraclePROD"]
+  },
+  {
+    "description": "report_gen_add_system_events: valid",
+    "toolName": "report_gen_add_system_events",
+    "inputArgs": {
+      "name": "SystemEventsDaily"
+    },
+    "expectedCliParams": ["-name SystemEventsDaily"]
+  },
+  {
+    "description": "report_gen_add_data_discovery: valid (deprecated)",
+    "toolName": "report_gen_add_data_discovery",
+    "inputArgs": {
+      "name": "LegacyDiscoveryReport",
+      "instance": "OldDB",
+      "searchByInfoTypes": "SSN,CCN"
+    },
+    "expectedCliParams": ["-name LegacyDiscoveryReport", "-instance OldDB", "-searchByInfoTypes \"SSN,CCN\""]
+  },
+  {
+    "description": "report_gen_update_audit: valid, new name",
+    "toolName": "report_gen_update_audit",
+    "inputArgs": {
+      "name": "DailyCSVAudit",
+      "newName": "DailyCSVAudit_v2"
+    },
+    "expectedCliParams": ["-name DailyCSVAudit", "-newName DailyCSVAudit_v2"]
+  },
+  {
+    "description": "report_gen_show_all: valid",
+    "toolName": "report_gen_show_all",
+    "inputArgs": {},
+    "expectedCliParams": []
+  },
+  {
+    "description": "report_gen_show_one: valid",
+    "toolName": "report_gen_show_one",
+    "inputArgs": {
+      "name": "DailyCSVAudit_v2"
+    },
+    "expectedCliParams": ["-name DailyCSVAudit_v2"]
+  },
+  {
+    "description": "report_gen_delete: valid",
+    "toolName": "report_gen_delete",
+    "inputArgs": {
+      "name": "MinimalAuditReport"
+    },
+    "expectedCliParams": ["-name MinimalAuditReport"]
+  }
+]

@@ -1,0 +1,125 @@
+[
+  {
+    "description": "ds_user_add: valid, minimal required",
+    "toolName": "ds_user_add",
+    "inputArgs": {
+      "login": "newadmin",
+      "password": "Password123!",
+      "role": "Administrator"
+    },
+    "expectedCliParams": ["-login newadmin", "-password Password123!", "-role Administrator", "-allowLogin", "-twoFactorAuth DISABLED"],
+    "absentCliParams": ["-email", "-enableADAuth", "-whiteHosts", "-whiteGroups", "-blackHosts", "-blackGroups"]
+  },
+  {
+    "description": "ds_user_add: valid, all optional string/list params",
+    "toolName": "ds_user_add",
+    "inputArgs": {
+      "login": "sec_officer",
+      "password": "SecurePassword!",
+      "role": "SecurityOfficer",
+      "email": "sec@example.com",
+      "whiteHosts": "192.168.1.10,10.0.0.5",
+      "whiteGroups": "InternalNet",
+      "blackHosts": "public.example.com",
+      "blackGroups": "ExternalRisky"
+    },
+    "expectedCliParams": [
+      "-login sec_officer", 
+      "-password SecurePassword!", 
+      "-role SecurityOfficer", 
+      "-email sec@example.com", 
+      "-allowLogin", 
+      "-twoFactorAuth DISABLED",
+      "-whiteHosts \"192.168.1.10,10.0.0.5\"",
+      "-whiteGroups InternalNet",
+      "-blackHosts public.example.com",
+      "-blackGroups ExternalRisky"
+    ],
+    "absentCliParams": ["-enableADAuth"]
+  },
+  {
+    "description": "ds_user_add: valid, boolean flags explicitly set",
+    "toolName": "ds_user_add",
+    "inputArgs": {
+      "login": "ad_user",
+      "password": "ADUserPass!",
+      "role": "User",
+      "enableADAuth": true,
+      "allowLogin": false,
+      "twoFactorAuth": "EMAIL"
+    },
+    "expectedCliParams": ["-login ad_user", "-password ADUserPass!", "-role User", "-enableADAuth", "-twoFactorAuth EMAIL"],
+    "absentCliParams": ["-allowLogin"] 
+  },
+  {
+    "description": "ds_user_update: valid, update role and email",
+    "toolName": "ds_user_update",
+    "inputArgs": {
+      "login": "newadmin",
+      "role": "SuperAdmin",
+      "email": "admin@example.com"
+    },
+    "expectedCliParams": ["-login newadmin", "-role SuperAdmin", "-email admin@example.com"]
+  },
+  {
+    "description": "ds_user_update: valid, update boolean flags",
+    "toolName": "ds_user_update",
+    "inputArgs": {
+      "login": "sec_officer",
+      "enableADAuth": true,
+      "allowLogin": true, 
+      "twoFactorAuth": "DISABLED"
+    },
+    "expectedCliParams": ["-login sec_officer", "-enableADAuth", "-allowLogin", "-twoFactorAuth DISABLED"]
+  },
+  {
+    "description": "ds_user_show_all: valid",
+    "toolName": "ds_user_show_all",
+    "inputArgs": {},
+    "expectedCliParams": []
+  },
+  {
+    "description": "ds_user_show_one: valid",
+    "toolName": "ds_user_show_one",
+    "inputArgs": {"login": "newadmin"},
+    "expectedCliParams": ["-login newadmin"]
+  },
+  {
+    "description": "ds_user_change_password: valid",
+    "toolName": "ds_user_change_password",
+    "inputArgs": {
+      "login": "newadmin",
+      "currentPwd": "Password123!",
+      "newPwd": "NewPassword456!"
+    },
+    "expectedCliParams": ["-login newadmin", "-currentPwd Password123!", "-newPwd NewPassword456!"]
+  },
+  {
+    "description": "ds_user_delete: valid",
+    "toolName": "ds_user_delete",
+    "inputArgs": {"login": "ad_user"},
+    "expectedCliParams": ["-login ad_user"]
+  },
+  {
+    "description": "role_add_access: valid, minimal",
+    "toolName": "role_add_access",
+    "inputArgs": {"name": "AuditorRole"},
+    "expectedCliParams": ["-name AuditorRole"],
+    "absentCliParams": ["-groupDN"]
+  },
+  {
+    "description": "role_add_access: valid, with groupDN",
+    "toolName": "role_add_access",
+    "inputArgs": {
+      "name": "AD_Linked_Role",
+      "groupDN": "CN=DBAuditors,OU=Groups,DC=example,DC=com"
+    },
+    "expectedCliParams": ["-name AD_Linked_Role", "-groupDN \"CN=DBAuditors,OU=Groups,DC=example,DC=com\""]
+  },
+  {
+    "description": "role_delete_access: valid",
+    "toolName": "role_delete_access",
+    "inputArgs": {"name": "AuditorRole"},
+    "expectedCliParams": ["-name AuditorRole"]
+  }
+]

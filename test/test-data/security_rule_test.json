@@ -1,0 +1,15 @@
+{
+  "connect_host": "127.0.0.1",
+  "connect_port": "11000",
+  "connect_protocol": "https",
+  "connect_login": "admin",
+  "connect_password": "password",
+  "rule_name": "test-security-rule",
+  "instance_name": "postgres-prod",
+  "comment": "Test security rule to block access to PII data",
+  "object_groups": "pii-tables",
+  "sql_operations": "SELECT,UPDATE",
+  "action": "Block",
+  "block_type": "SQLError",
+  "block_message": "Access to PII data is restricted"
+}

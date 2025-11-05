@@ -1,0 +1,145 @@
+[
+  {
+    "description": "cef_add_group: valid, enable default (true)",
+    "toolName": "cef_add_group",
+    "inputArgs": {
+      "name": "SIEM_Group1"
+    },
+    "expectedCliParams": ["-name SIEM_Group1", "-enable"],
+    "absentCliParams": ["-newName"]
+  },
+  {
+    "description": "cef_add_group: valid, enable explicitly true",
+    "toolName": "cef_add_group",
+    "inputArgs": {
+      "name": "SIEM_Group2",
+      "enable": true
+    },
+    "expectedCliParams": ["-name SIEM_Group2", "-enable"]
+  },
+  {
+    "description": "cef_add_group: valid, enable explicitly false",
+    "toolName": "cef_add_group",
+    "inputArgs": {
+      "name": "SIEM_Group3",
+      "enable": false
+    },
+    "expectedCliParams": ["-name SIEM_Group3"],
+    "absentCliParams": ["-enable"]
+  },
+  {
+    "description": "cef_add_item: valid, enable and type default",
+    "toolName": "cef_add_item",
+    "inputArgs": {
+      "name": "LoginSuccessItem",
+      "groupName": "SIEM_Group1",
+      "cef": "CEF:0|DataSunrise|Audit|1.0|LOGIN_SUCCESSFUL|Login Successful|Low|src={src_ip} spt={src_port} dst={dst_ip} dpt={dst_port} suser={db_user}"
+    },
+    "expectedCliParams": ["-name LoginSuccessItem", "-groupName SIEM_Group1", "-type \"Session Open\"", "-cef \"CEF:0|DataSunrise|Audit|1.0|LOGIN_SUCCESSFUL|Login Successful|Low|src={src_ip} spt={src_port} dst={dst_ip} dpt={dst_port} suser={db_user}\"", "-enable"],
+    "absentCliParams": ["-newName"]
+  },
+  {
+    "description": "cef_add_item: valid, enable false, type custom",
+    "toolName": "cef_add_item",
+    "inputArgs": {
+      "name": "RuleMatchedItem",
+      "groupName": "SIEM_Group2",
+      "type": "RULE_MATCHED",
+      "cef": "CEF:0|DataSunrise|Security|1.0|RULE_MATCHED|Rule Matched|High|rule_name={rule_name}",
+      "enable": false
+    },
+    "expectedCliParams": ["-name RuleMatchedItem", "-groupName SIEM_Group2", "-type RULE_MATCHED", "-cef \"CEF:0|DataSunrise|Security|1.0|RULE_MATCHED|Rule Matched|High|rule_name={rule_name}\""],
+    "absentCliParams": ["-enable", "-newName"]
+  },
+  {
+    "description": "cef_update_group: valid, only newName",
+    "toolName": "cef_update_group",
+    "inputArgs": {
+      "name": "SIEM_Group1",
+      "newName": "SIEM_Group_Updated"
+    },
+    "expectedCliParams": ["-name SIEM_Group1", "-newName SIEM_Group_Updated"],
+    "absentCliParams": ["-enable"]
+  },
+  {
+    "description": "cef_update_group: valid, only enable",
+    "toolName": "cef_update_group",
+    "inputArgs": {
+      "name": "SIEM_Group_Updated",
+      "enable": false
+    },
+    "expectedCliParams": ["-name SIEM_Group_Updated"],
+    "absentCliParams": ["-enable", "-newName"] 
+  },
+  {
+    "description": "cef_update_group: valid, newName and enable true",
+    "toolName": "cef_update_group",
+    "inputArgs": {
+      "name": "SIEM_Group2",
+      "newName": "SIEM_Group2_Renamed",
+      "enable": true
+    },
+    "expectedCliParams": ["-name SIEM_Group2", "-newName SIEM_Group2_Renamed", "-enable"]
+  },
+  {
+    "description": "cef_update_item: valid, update multiple fields",
+    "toolName": "cef_update_item",
+    "inputArgs": {
+      "name": "LoginSuccessItem",
+      "groupName": "SIEM_Group_Updated",
+      "newName": "LoginSuccessItem_V2",
+      "type": "LOGIN_FAILED",
+      "cef": "CEF:0|DataSunrise|Audit|1.0|LOGIN_FAILED|Login Failed|Medium|src={src_ip} suser={db_user}",
+      "enable": true
+    },
+    "expectedCliParams": ["-name LoginSuccessItem", "-groupName SIEM_Group_Updated", "-newName LoginSuccessItem_V2", "-type LOGIN_FAILED", "-cef \"CEF:0|DataSunrise|Audit|1.0|LOGIN_FAILED|Login Failed|Medium|src={src_ip} suser={db_user}\"", "-enable"]
+  },
+  {
+    "description": "cef_show_groups: valid (no params)",
+    "toolName": "cef_show_groups",
+    "inputArgs": {},
+    "expectedCliParams": []
+  },
+  {
+    "description": "cef_show_group: valid",
+    "toolName": "cef_show_group",
+    "inputArgs": {
+      "name": "SIEM_Group_Updated"
+    },
+    "expectedCliParams": ["-name SIEM_Group_Updated"]
+  },
+  {
+    "description": "cef_show_items: valid",
+    "toolName": "cef_show_items",
+    "inputArgs": {
+      "groupName": "SIEM_Group_Updated"
+    },
+    "expectedCliParams": ["-groupName SIEM_Group_Updated"]
+  },
+  {
+    "description": "cef_show_item: valid",
+    "toolName": "cef_show_item",
+    "inputArgs": {
+      "name": "LoginSuccessItem_V2",
+      "groupName": "SIEM_Group_Updated"
+    },
+    "expectedCliParams": ["-name LoginSuccessItem_V2", "-groupName SIEM_Group_Updated"]
+  },
+  {
+    "description": "cef_delete_item: valid",
+    "toolName": "cef_delete_item",
+    "inputArgs": {
+      "name": "LoginSuccessItem_V2",
+      "groupName": "SIEM_Group_Updated"
+    },
+    "expectedCliParams": ["-name LoginSuccessItem_V2", "-groupName SIEM_Group_Updated"]
+  },
+  {
+    "description": "cef_delete_group: valid",
+    "toolName": "cef_delete_group",
+    "inputArgs": {
+      "name": "SIEM_Group_Updated"
+    },
+    "expectedCliParams": ["-name SIEM_Group_Updated"]
+  }
+]

@@ -1,0 +1,228 @@
+[
+  {
+    "description": "instance_add: ORACLE - valid, SID",
+    "toolName": "instance_add",
+    "inputArgs": {
+      "name": "ora_inst_sid",
+      "dbType": "ORACLE",
+      "login": "system",
+      "instance": "ORCLSID",
+      "instanceType": "sid"
+    },
+    "expectedCliParams": ["-name ora_inst_sid", "-dbType ORACLE", "-login system", "-instance ORCLSID", "-instanceType sid"],
+    "absentCliParams": ["-database", "-account", "-serverName", "-awsRegion", "-queryResultLocation"]
+  },
+  {
+    "description": "instance_add: ORACLE - valid, Service Name",
+    "toolName": "instance_add",
+    "inputArgs": {
+      "name": "ora_inst_service",
+      "dbType": "ORACLE",
+      "login": "system",
+      "instance": "orcl.example.com",
+      "instanceType": "name"
+    },
+    "expectedCliParams": ["-name ora_inst_service", "-dbType ORACLE", "-login system", "-instance orcl.example.com", "-instanceType name"],
+    "absentCliParams": ["-database", "-account", "-serverName", "-awsRegion", "-queryResultLocation"]
+  },
+  {
+    "description": "instance_add: POSTGRESQL - valid",
+    "toolName": "instance_add",
+    "inputArgs": {
+      "name": "pg_inst_01",
+      "dbType": "POSTGRESQL",
+      "login": "pguser",
+      "database": "postgresdb"
+    },
+    "expectedCliParams": ["-name pg_inst_01", "-dbType POSTGRESQL", "-login pguser", "-database postgresdb"],
+    "absentCliParams": ["-instance", "-account", "-serverName", "-awsRegion", "-queryResultLocation"]
+  },
+  {
+    "description": "instance_add: MYSQL - valid",
+    "toolName": "instance_add",
+    "inputArgs": {
+      "name": "mysql_inst_01",
+      "dbType": "MYSQL",
+      "login": "mysqluser",
+      "database": "mysqldb"
+    },
+    "expectedCliParams": ["-name mysql_inst_01", "-dbType MYSQL", "-login mysqluser", "-database mysqldb"],
+    "absentCliParams": ["-instance", "-account", "-serverName", "-awsRegion", "-queryResultLocation"]
+  },
+  {
+    "description": "instance_add: SNOWFLAKE - valid",
+    "toolName": "instance_add",
+    "inputArgs": {
+      "name": "sf_inst_01",
+      "dbType": "SNOWFLAKE",
+      "login": "sfuser",
+      "account": "xyz12345.us-east-1"
+    },
+    "expectedCliParams": ["-name sf_inst_01", "-dbType SNOWFLAKE", "-login sfuser", "-account xyz12345.us-east-1"],
+    "absentCliParams": ["-instance", "-database", "-serverName", "-awsRegion", "-queryResultLocation"]
+  },
+  {
+    "description": "instance_add: ATHENA - valid",
+    "toolName": "instance_add",
+    "inputArgs": {
+      "name": "athena_inst_01",
+      "dbType": "ATHENA",
+      "login": "awsuser",
+      "awsRegion": "us-west-2",
+      "queryResultLocation": "s3://my-athena-results/"
+    },
+    "expectedCliParams": ["-name athena_inst_01", "-dbType ATHENA", "-login awsuser", "-awsRegion us-west-2", "-queryResultLocation s3://my-athena-results/"],
+    "absentCliParams": ["-instance", "-database", "-account", "-serverName"]
+  },
+  {
+    "description": "instance_add: INFORMIX - valid",
+    "toolName": "instance_add",
+    "inputArgs": {
+      "name": "ifx_inst_01",
+      "dbType": "INFORMIX",
+      "login": "ifxuser",
+      "serverName": "informix_server1",
+      "database": "stores_demo"
+    },
+    "expectedCliParams": ["-name ifx_inst_01", "-dbType INFORMIX", "-login ifxuser", "-serverName informix_server1", "-database stores_demo"],
+    "absentCliParams": ["-instance", "-account", "-awsRegion", "-queryResultLocation"]
+  },
+  {
+    "description": "instance_add: DYNAMODB - valid",
+    "toolName": "instance_add",
+    "inputArgs": {
+      "name": "dynamo_inst_01",
+      "dbType": "DYNAMODB",
+      "login": "aws_iam_user",
+      "awsRegion": "eu-central-1",
+      "database": "eu-central-1" 
+    },
+    "expectedCliParams": ["-name dynamo_inst_01", "-dbType DYNAMODB", "-login aws_iam_user", "-awsRegion eu-central-1", "-database eu-central-1"],
+    "absentCliParams": ["-instance", "-account", "-serverName", "-queryResultLocation"]
+  },
+  {
+    "description": "instance_add: ELASTICSEARCH - valid",
+    "toolName": "instance_add",
+    "inputArgs": {
+      "name": "es_inst_01",
+      "dbType": "ELASTICSEARCH",
+      "login": "es_user",
+      "awsRegion": "ap-southeast-1"
+    },
+    "expectedCliParams": ["-name es_inst_01", "-dbType ELASTICSEARCH", "-login es_user", "-awsRegion ap-southeast-1"],
+    "absentCliParams": ["-instance", "-database", "-account", "-serverName", "-queryResultLocation"]
+  },
+  {
+    "description": "instance_add: AURORAMYSQL - valid",
+    "toolName": "instance_add",
+    "inputArgs": {
+      "name": "aurora_mysql_01",
+      "dbType": "AURORAMYSQL",
+      "login": "aurora_user",
+      "awsRegion": "us-east-1",
+      "database": "aurora_db_name"
+    },
+    "expectedCliParams": ["-name aurora_mysql_01", "-dbType AURORAMYSQL", "-login aurora_user", "-awsRegion us-east-1", "-database aurora_db_name"],
+    "absentCliParams": ["-instance", "-account", "-serverName", "-queryResultLocation"]
+  },
+  {
+    "description": "instance_add_plus: ORACLE - valid with proxy",
+    "toolName": "instance_add_plus",
+    "inputArgs": {
+      "name": "ora_plus_01",
+      "dbType": "ORACLE",
+      "dbHost": "orahost.example.com",
+      "dbPort": "1521",
+      "login": "sys",
+      "password": "securePassword",
+      "instance": "ORCLPDB1",
+      "mode": "PROXY",
+      "proxyPort": "11521",
+      "proxyHost": "0.0.0.0"
+    },
+    "expectedCliParams": ["-name ora_plus_01", "-dbType ORACLE", "-dbHost orahost.example.com", "-dbPort 1521", "-login sys", "-password securePassword", "-instance ORCLPDB1", "-mode PROXY", "-proxyPort 11521", "-proxyHost 0.0.0.0"],
+    "absentCliParams": ["-database", "-account", "-serverName", "-awsRegion", "-queryResultLocation", "-snifferDevice"]
+  },
+  {
+    "description": "instance_add_plus: POSTGRESQL - valid with sniffer",
+    "toolName": "instance_add_plus",
+    "inputArgs": {
+      "name": "pg_plus_01",
+      "dbType": "POSTGRESQL",
+      "dbHost": "pghost.example.com",
+      "dbPort": "5432",
+      "login": "pg_mon_user",
+      "password": "pgPassword",
+      "database": "sales_db",
+      "mode": "SNIFFER",
+      "snifferDevice": "eth0"
+    },
+    "expectedCliParams": ["-name pg_plus_01", "-dbType POSTGRESQL", "-dbHost pghost.example.com", "-dbPort 5432", "-login pg_mon_user", "-password pgPassword", "-database sales_db", "-mode SNIFFER", "-snifferDevice eth0"],
+    "absentCliParams": ["-instance", "-account", "-serverName", "-awsRegion", "-queryResultLocation", "-proxyPort"]
+  },
+  {
+    "description": "instance_add_plus: SNOWFLAKE - valid with proxy",
+    "toolName": "instance_add_plus",
+    "inputArgs": {
+      "name": "sf_plus_01",
+      "dbType": "SNOWFLAKE",
+      "dbHost": "myaccount.snowflakecomputing.com",
+      "dbPort": "443", 
+      "login": "sf_user_main",
+      "password": "sf_password_123",
+      "account": "myaccount",
+      "mode": "PROXY",
+      "proxyPort": "10443",
+      "ssl": true 
+    },
+    "expectedCliParams": ["-name sf_plus_01", "-dbType SNOWFLAKE", "-dbHost myaccount.snowflakecomputing.com", "-dbPort 443", "-login sf_user_main", "-password sf_password_123", "-account myaccount", "-mode PROXY", "-proxyPort 10443", "-ssl"],
+    "absentCliParams": ["-instance", "-database", "-serverName", "-awsRegion", "-queryResultLocation"]
+  },
+  {
+    "description": "instance_add_plus: ATHENA - valid with proxy",
+    "toolName": "instance_add_plus",
+    "inputArgs": {
+      "name": "athena_plus_01",
+      "dbType": "ATHENA",
+      "dbHost": "athena.us-east-1.amazonaws.com", 
+      "dbPort": "443",
+      "login": "athena_user_key",
+      "password": "athena_secret_key",
+      "awsRegion": "us-east-1",
+      "queryResultLocation": "s3://my-athena-query-logs/",
+      "mode": "PROXY", 
+      "proxyPort": "10444"
+    },
+    "expectedCliParams": ["-name athena_plus_01", "-dbType ATHENA", "-dbHost athena.us-east-1.amazonaws.com", "-dbPort 443", "-login athena_user_key", "-password athena_secret_key", "-awsRegion us-east-1", "-queryResultLocation s3://my-athena-query-logs/", "-mode PROXY", "-proxyPort 10444"],
+    "absentCliParams": ["-instance", "-database", "-account", "-serverName"]
+  },
+  {
+    "description": "instance_add: CASSANDRA - valid (no specific instance/database/account etc.)",
+    "toolName": "instance_add",
+    "inputArgs": {
+      "name": "cass_inst_01",
+      "dbType": "CASSANDRA",
+      "login": "cass_user"
+    },
+    "expectedCliParams": ["-name cass_inst_01", "-dbType CASSANDRA", "-login cass_user"],
+    "absentCliParams": ["-instance", "-database", "-account", "-serverName", "-awsRegion", "-queryResultLocation"]
+  },
+  {
+    "description": "instance_add_plus: S3 - valid with proxy",
+    "toolName": "instance_add_plus",
+    "inputArgs": {
+      "name": "s3_plus_01",
+      "dbType": "S3",
+      "dbHost": "s3.amazonaws.com",
+      "dbPort": "443",
+      "login": "s3_access_key",
+      "password": "s3_secret",
+      "mode": "PROXY",
+      "proxyPort": "10445",
+      "protocolType": "HTTP Proxy",
+      "ssl": true
+    },
+    "expectedCliParams": ["-name s3_plus_01", "-dbType S3", "-dbHost s3.amazonaws.com", "-dbPort 443", "-login s3_access_key", "-password s3_secret", "-mode PROXY", "-proxyPort 10445", "-protocolType \"HTTP Proxy\"", "-ssl"],
+    "absentCliParams": ["-instance", "-database", "-account", "-serverName", "-awsRegion", "-queryResultLocation"]
+  }
+]

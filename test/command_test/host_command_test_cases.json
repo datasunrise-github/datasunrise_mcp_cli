@@ -1,0 +1,124 @@
+[
+  {
+    "description": "host_add: valid, single host",
+    "toolName": "host_add",
+    "inputArgs": {
+      "name": "WebServer1",
+      "host": "webserver1.example.com"
+    },
+    "expectedCliParams": ["-name WebServer1", "-host webserver1.example.com"]
+  },
+  {
+    "description": "host_add: valid, IPv4 network",
+    "toolName": "host_add",
+    "inputArgs": {
+      "name": "InternalNetworkV4",
+      "netIPv4": "192.168.1.0",
+      "netMaskV4": "255.255.255.0"
+    },
+    "expectedCliParams": ["-name InternalNetworkV4", "-netIPv4 192.168.1.0", "-netMaskV4 255.255.255.0"]
+  },
+  {
+    "description": "host_add: valid, IPv6 network",
+    "toolName": "host_add",
+    "inputArgs": {
+      "name": "InternalNetworkV6",
+      "netIPv6": "2001:db8:abcd::/48"
+    },
+    "expectedCliParams": ["-name InternalNetworkV6", "-netIPv6 2001:db8:abcd::/48"]
+  },
+  {
+    "description": "host_add: valid, IPv4 range",
+    "toolName": "host_add",
+    "inputArgs": {
+      "name": "GuestWifiRangeV4",
+      "startIPv4": "192.168.100.10",
+      "endIPv4": "192.168.100.200"
+    },
+    "expectedCliParams": ["-name GuestWifiRangeV4", "-startIPv4 192.168.100.10", "-endIPv4 192.168.100.200"]
+  },
+  {
+    "description": "host_add: valid, IPv6 range",
+    "toolName": "host_add",
+    "inputArgs": {
+      "name": "GuestWifiRangeV6",
+      "startIPv6": "2001:db8:cafe::1",
+      "endIPv6": "2001:db8:cafe::ff"
+    },
+    "expectedCliParams": ["-name GuestWifiRangeV6", "-startIPv6 2001:db8:cafe::1", "-endIPv6 2001:db8:cafe::ff"]
+  },
+  {
+    "description": "host_group_add: valid, minimal",
+    "toolName": "host_group_add",
+    "inputArgs": {
+      "name": "AllWebServers"
+    },
+    "expectedCliParams": ["-name AllWebServers"],
+    "absentCliParams": ["-addMembers"]
+  },
+  {
+    "description": "host_group_add: valid, with members",
+    "toolName": "host_group_add",
+    "inputArgs": {
+      "name": "ProductionServers",
+      "addMembers": "WebServer1,InternalNetworkV4"
+    },
+    "expectedCliParams": ["-name ProductionServers", "-addMembers \"WebServer1,InternalNetworkV4\""]
+  },
+  {
+    "description": "host_update: valid, update host address",
+    "toolName": "host_update",
+    "inputArgs": {
+      "name": "WebServer1",
+      "host": "new-webserver1.example.com"
+    },
+    "expectedCliParams": ["-name WebServer1", "-host new-webserver1.example.com"]
+  },
+  {
+    "description": "host_group_update: valid, add and remove members",
+    "toolName": "host_group_update",
+    "inputArgs": {
+      "name": "ProductionServers",
+      "addMembers": "DBServer1",
+      "removeMembers": "WebServer1"
+    },
+    "expectedCliParams": ["-name ProductionServers", "-addMembers DBServer1", "-removeMembers WebServer1"],
+    "absentCliParams": ["-newName"]
+  },
+  {
+    "description": "host_show_all: valid",
+    "toolName": "host_show_all",
+    "inputArgs": {},
+    "expectedCliParams": []
+  },
+  {
+    "description": "host_show_one: valid",
+    "toolName": "host_show_one",
+    "inputArgs": {"name": "WebServer1"},
+    "expectedCliParams": ["-name WebServer1"]
+  },
+  {
+    "description": "host_group_show_all: valid",
+    "toolName": "host_group_show_all",
+    "inputArgs": {},
+    "expectedCliParams": []
+  },
+  {
+    "description": "host_group_show_one: valid",
+    "toolName": "host_group_show_one",
+    "inputArgs": {"name": "ProductionServers"},
+    "expectedCliParams": ["-name ProductionServers"]
+  },
+  {
+    "description": "host_delete: valid",
+    "toolName": "host_delete",
+    "inputArgs": {"name": "GuestWifiRangeV4"},
+    "expectedCliParams": ["-name GuestWifiRangeV4"]
+  },
+  {
+    "description": "host_group_delete: valid",
+    "toolName": "host_group_delete",
+    "inputArgs": {"name": "AllWebServers"},
+    "expectedCliParams": ["-name AllWebServers"]
+  }
+]

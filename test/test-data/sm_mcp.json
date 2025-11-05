@@ -1,0 +1,173 @@
+{
+	"taskID" : 21,
+	"startTime" : "2025-06-16 10:12:13",
+	"endTime" : "2025-06-16 10:12:14",
+	"status" : 1,
+	"currentState" : "Done",
+	"taskError" : "",
+	"periodicTaskID" : 10,
+	"execFromServerID" : 1,
+	"config" : {
+		"instIdSrc" : 1,
+		"instIdTarg" : 1,
+		"sysDbaSrc" : false,
+		"sysDbaTarg" : false,
+		"createTables" : true,
+		"createUniqueConstraints" : false,
+		"createForeignKeys" : false,
+		"createIndexes" : false,
+		"createCheckConstraints" : false,
+		"createDefaultConstraints" : false,
+		"checkTrgTablesIsEmpty" : false,
+		"truncateTables" : false,
+		"useParallelLoad" : true,
+		"applyRelatedTablesFilters" : false,
+		"resolveUndefinedRelationshipTypes" : false,
+		"disableTriggers" : false,
+		"maskInPlace" : false,
+		"anyTargetSchemas" : false,
+		"ignoreChecks" : false,
+		"databases" : [
+			{
+				"targetName" : "smoke_test_margo_target",
+				"name" : "smoke_test_margo",
+				"schemas" : [
+					{
+						"name" : "public",
+						"targetName" : "public",
+						"tables" : [
+							{
+								"name" : "contacts",
+								"targetName" : "contacts",
+								"columns" : [
+									{
+										"name" : "contact_id",
+										"nameIsRegexp" : false,
+										"isExactName" : false,
+										"nameIsPath" : false,
+										"datatype" : 109,
+										"keyType" : [
+											"PK"
+										],
+										"isReferenced" : false,
+										"maskValue" : "",
+										"refColumns" : [],
+										"maskTypeName" : ""
+									},
+									{
+										"name" : "first_name",
+										"nameIsRegexp" : false,
+										"isExactName" : false,
+										"nameIsPath" : false,
+										"datatype" : 203,
+										"keyType" : [],
+										"isReferenced" : false,
+										"maskValue" : "",
+										"refColumns" : [],
+										"maskTypeName" : ""
+									},
+									{
+										"name" : "last_name",
+										"nameIsRegexp" : false,
+										"isExactName" : false,
+										"nameIsPath" : false,
+										"datatype" : 203,
+										"keyType" : [],
+										"isReferenced" : false,
+										"maskValue" : "",
+										"refColumns" : [],
+										"maskTypeName" : ""
+									},
+									{
+										"name" : "email",
+										"nameIsRegexp" : false,
+										"isExactName" : false,
+										"nameIsPath" : false,
+										"datatype" : 203,
+										"keyType" : [],
+										"isReferenced" : false,
+										"maskType" : 8,
+										"maskValue" : "",
+										"maskOptions" : "{\\\"keepNull\\\":false}",
+										"maskTypeName" : "Email masking",
+										"refColumns" : []
+									},
+									{
+										"name" : "phone",
+										"nameIsRegexp" : false,
+										"isExactName" : false,
+										"nameIsPath" : false,
+										"datatype" : 203,
+										"keyType" : [],
+										"isReferenced" : false,
+										"maskType" : 2,
+										"maskValue" : "555",
+										"maskOptions" : "{\\\"keepNull\\\":false}",
+										"maskTypeName" : "Fixed string",
+										"refColumns" : []
+									},
+									{
+										"name" : "customer_id",
+										"nameIsRegexp" : false,
+										"isExactName" : false,
+										"nameIsPath" : false,
+										"datatype" : 109,
+										"keyType" : [
+											"FK"
+										],
+										"isReferenced" : false,
+										"maskValue" : "",
+										"refColumns" : [],
+										"maskTypeName" : ""
+									}
+								],
+								"objectType" : 0
+							}
+						],
+						"transferAllTables" : false
+					}
+				]
+			}
+		],
+		"loadType" : 0,
+		"loaderName" : "Use default load",
+		"useProxyForMasking" : false,
+		"needGenerateReport" : false,
+		"isSrcDefaultCredentials" : true,
+		"isTargDefaultCredentials" : true,
+		"periodicTask" : true,
+		"ownerName" : "Static Masking Task",
+		"instNameSrc" : "PG",
+		"instNameDst" : "PG"
+	},
+	"type" : 1,
+	"result" : {
+		"totalErrorCount" : 0,
+		"databases" : [
+			{
+				"name" : "smoke_test_margo",
+				"schemas" : [
+					{
+						"name" : "public",
+						"tables" : [
+							{
+								"name" : "contacts",
+								"speedRows" : 319,
+								"speedKb" : 14,
+								"totalKb" : 14,
+								"currentStatusCode" : 2,
+								"currentStatus" : "",
+								"processedRows" : 319,
+								"filteredRows" : 319
+							}
+						]
+					}
+				]
+			}
+		],
+		"duration" : 1
+	},
+	"error" : 0,
+	"errorDesc" : "",
+	"queryID" : 928021151
+}

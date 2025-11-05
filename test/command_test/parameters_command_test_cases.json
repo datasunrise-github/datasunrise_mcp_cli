@@ -1,0 +1,26 @@
+[
+  {
+    "description": "parameter_show_all: valid (no params)",
+    "toolName": "parameter_show_all",
+    "inputArgs": {},
+    "expectedCliParams": []
+  },
+  {
+    "description": "parameter_change: valid",
+    "toolName": "parameter_change",
+    "inputArgs": {
+      "name": "AgentPort",
+      "value": "9001"
+    },
+    "expectedCliParams": ["-name AgentPort", "-value 9001"]
+  },
+  {
+    "description": "parameter_change: valid, value with spaces",
+    "toolName": "parameter_change",
+    "inputArgs": {
+      "name": "LogDeletePeriod",
+      "value": "30 days"
+    },
+    "expectedCliParams": ["-name LogDeletePeriod", "-value \"30 days\""]
+  }
+]

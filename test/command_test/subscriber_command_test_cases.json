@@ -1,0 +1,65 @@
+[
+  {
+    "description": "subscriber_add: valid email subscriber",
+    "toolName": "subscriber_add",
+    "inputArgs": {
+      "name": "AdminEmailAlerts",
+      "serverName": "PrimarySMTP",
+      "sendToAddress": "admin@example.com"
+    },
+    "expectedCliParams": ["-name AdminEmailAlerts", "-serverName PrimarySMTP", "-sendToAddress admin@example.com"]
+  },
+  {
+    "description": "subscriber_add: valid SNMP subscriber",
+    "toolName": "subscriber_add",
+    "inputArgs": {
+      "name": "SNMPTrapReceiver1",
+      "serverName": "MainSNMPTrap",
+      "sendToAddress": "10.0.1.100:162" 
+    },
+    "expectedCliParams": ["-name SNMPTrapReceiver1", "-serverName MainSNMPTrap", "-sendToAddress 10.0.1.100:162"]
+  },
+  {
+    "description": "subscriber_update: valid, change address and server",
+    "toolName": "subscriber_update",
+    "inputArgs": {
+      "name": "AdminEmailAlerts",
+      "serverName": "BackupSMTP",
+      "sendToAddress": "sysadmin@example.com"
+    },
+    "expectedCliParams": ["-name AdminEmailAlerts", "-serverName BackupSMTP", "-sendToAddress sysadmin@example.com"],
+    "absentCliParams": ["-newName"]
+  },
+  {
+    "description": "subscriber_update: valid, only new name",
+    "toolName": "subscriber_update",
+    "inputArgs": {
+      "name": "SNMPTrapReceiver1",
+      "newName": "PrimarySNMPTrap"
+    },
+    "expectedCliParams": ["-name SNMPTrapReceiver1", "-newName PrimarySNMPTrap"],
+    "absentCliParams": ["-serverName", "-sendToAddress"]
+  },
+  {
+    "description": "subscriber_show_all: valid",
+    "toolName": "subscriber_show_all",
+    "inputArgs": {},
+    "expectedCliParams": []
+  },
+  {
+    "description": "subscriber_show_one: valid",
+    "toolName": "subscriber_show_one",
+    "inputArgs": {
+      "name": "PrimarySNMPTrap"
+    },
+    "expectedCliParams": ["-name PrimarySNMPTrap"]
+  },
+  {
+    "description": "subscriber_delete: valid",
+    "toolName": "subscriber_delete",
+    "inputArgs": {
+      "name": "AdminEmailAlerts"
+    },
+    "expectedCliParams": ["-name AdminEmailAlerts"]
+  }
+]

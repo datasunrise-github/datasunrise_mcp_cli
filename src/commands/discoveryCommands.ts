@@ -1,0 +1,125 @@
+import { CliCommand } from './types.js';
+import { enhanceParameterDescription } from '../description_helpers.js';
+
+export const discoveryCommands: CliCommand[] = [
+  {
+    toolName: 'discovery_group_add',
+    description: 'Adds a new Discovery Group. Discovery Groups containerize attributes (filters) for sensitive data searches.',
+    baseCommand: 'addDiscoveryGr',
+    params: [
+      { name: 'name', type: 'string', description: enhanceParameterDescription('string', 'Unique name for the new Discovery Group.'), required: true, cliName: '-name' },
+      { name: 'securityStandards', type: 'string', description: enhanceParameterDescription('string', 'Comma-separated list of security standard names (e.g., HIPAA, PCI DSS) to associate.', 'LIST'), required: false, cliName: '-securityStandards' },
+    ],
+    category: 'Discovery',
+  },
+  {
+    toolName: 'discovery_attribute_add',
+    description: 'Adds a discovery attribute (filter criteria) to an existing Discovery Group.',
+    baseCommand: 'addDiscoveryAttr',
+    params: [
+      { name: 'group', type: 'string', description: enhanceParameterDescription('string', 'Name of the existing Discovery Group to add this attribute to.'), required: true, cliName: '-group' },
+      { name: 'name', type: 'string', description: enhanceParameterDescription('string', 'Unique name for the new discovery attribute.'), required: true, cliName: '-name' },
+      { name: 'colNames', type: 'string', description: enhanceParameterDescription('string', 'Semicolon-separated list of column names to match (e.g., "SSN;CREDIT_CARD").', 'LIST_SEMICOLON'), required: false, cliName: '-colNames' },
+      { name: 'colNamesCS', type: 'string', description: enhanceParameterDescription('string', 'Case-sensitive column names (true | false).'), required: false, cliName: '-colNamesCS' },
+      { name: 'colType', type: 'string', description: enhanceParameterDescription('string', 'Expected data type of columns (Not Check | Strings Only | Numbers Only | Dates Only | Dates and Time | Time Only | Any Type as String).', 'ENUM'), required: false, cliName: '-colType' },
+      { name: 'contTemplate', type: 'string', description: enhanceParameterDescription('string', 'Regular expression to match against column content (for STRING types).', 'REGEX'), required: false, cliName: '-contTemplate' },
+      { name: 'contTemplateCS', type: 'string', description: enhanceParameterDescription('string', 'Case-sensitive content template matching (true | false).'), required: false, cliName: '-contTemplateCS' },
+      { name: 'fileNameTemplate', type: 'string', description: enhanceParameterDescription('string', 'Semicolon-separated file name patterns for file-based discovery (e.g., "*.log;data_*.csv").', 'LIST_SEMICOLON'), required: false, cliName: '-fileNameTemplate' },
+      { name: 'fileNameTemplateCS', type: 'string', description: enhanceParameterDescription('string', 'Case-sensitive file name template matching (true | false).'), required: false, cliName: '-fileNameTemplateCS' },
+      { name: 'min', type: 'number', description: enhanceParameterDescription('number', 'Minimum numeric value for NUMBER type columns.'), required: false, cliName: '-min' },
+      { name: 'max', type: 'number', description: enhanceParameterDescription('number', 'Maximum numeric value for NUMBER type columns.'), required: false, cliName: '-max' },
+      { name: 'minDate', type: 'string', description: enhanceParameterDescription('string', 'Minimum date/timestamp (yyyy-MM-dd HH:mm:ss) for DATE types.', 'DATETIME'), required: false, cliName: '-minDate' },
+      { name: 'maxDate', type: 'string', description: enhanceParameterDescription('string', 'Maximum date/timestamp (yyyy-MM-dd HH:mm:ss) for DATE types.', 'DATETIME'), required: false, cliName: '-maxDate' },
+      { name: 'nameSeparator', type: 'string', description: enhanceParameterDescription('string', 'Separator for multi-value string parameters like colNames.', undefined, ';'), required: false, cliName: '-nameSeparator', defaultValue: ';' },
+    ],
+    category: 'Discovery',
+  },
+  {
+    toolName: 'discovery_group_update',
+    description: "Updates an existing Discovery Group's name or associated security standards.",
+    baseCommand: 'updateDiscoveryGr',
+    params: [
+      { name: 'name', type: 'string', description: enhanceParameterDescription('string', 'Current name of the Discovery Group to update.'), required: true, cliName: '-name' },
+      { name: 'newName', type: 'string', description: enhanceParameterDescription('string', 'New name for the Discovery Group.'), required: false, cliName: '-newName' },
+      { name: 'securityStandards', type: 'string', description: enhanceParameterDescription('string', 'Comma-separated list of security standard names to set. Replaces existing.', 'LIST'), required: false, cliName: '-securityStandards' },
+    ],
+    category: 'Discovery',
+  },
+  {
+    toolName: 'discovery_attribute_update',
+    description: 'Updates an existing discovery attribute within a Discovery Group.',
+    baseCommand: 'updateDiscoveryAttr',
+    params: [
+      { name: 'group', type: 'string', description: enhanceParameterDescription('string', 'Name of the Discovery Group containing the attribute.'), required: true, cliName: '-group' },
+      { name: 'name', type: 'string', description: enhanceParameterDescription('string', 'Current name of the discovery attribute to update.'), required: true, cliName: '-name' },
+      { name: 'newName', type: 'string', description: enhanceParameterDescription('string', 'New name for the discovery attribute.'), required: false, cliName: '-newName' },
+      { name: 'colNames', type: 'string', description: enhanceParameterDescription('string', 'Semicolon-separated list of column names to match.', 'LIST_SEMICOLON'), required: false, cliName: '-colNames' },
+      { name: 'colNamesCS', type: 'string', description: enhanceParameterDescription('string', 'Case-sensitive column names (true | false).'), required: false, cliName: '-colNamesCS' },
+      { name: 'colType', type: 'string', description: enhanceParameterDescription('string', 'Expected data type of columns.', 'ENUM'), required: false, cliName: '-colType' },
+      { name: 'contTemplate', type: 'string', description: enhanceParameterDescription('string', 'Regular expression for column content.', 'REGEX'), required: false, cliName: '-contTemplate' },
+      { name: 'contTemplateCS', type: 'string', description: enhanceParameterDescription('string', 'Case-sensitive content template matching (true | false).'), required: false, cliName: '-contTemplateCS' },
+      { name: 'fileNameTemplate', type: 'string', description: enhanceParameterDescription('string', 'Semicolon-separated file name patterns for file-based discovery (e.g., "*.log;data_*.csv").', 'LIST_SEMICOLON'), required: false, cliName: '-fileNameTemplate' },
+      { name: 'fileNameTemplateCS', type: 'string', description: enhanceParameterDescription('string', 'Case-sensitive file name template matching (true | false).'), required: false, cliName: '-fileNameTemplateCS' },
+      { name: 'min', type: 'number', description: enhanceParameterDescription('number', 'Minimum numeric value for NUMBER type columns.'), required: false, cliName: '-min' },
+      { name: 'max', type: 'number', description: enhanceParameterDescription('number', 'Maximum numeric value for NUMBER type columns.'), required: false, cliName: '-max' },
+      { name: 'minDate', type: 'string', description: enhanceParameterDescription('string', 'Minimum date/timestamp (yyyy-MM-dd HH:mm:ss) for DATE types.', 'DATETIME'), required: false, cliName: '-minDate' },
+      { name: 'maxDate', type: 'string', description: enhanceParameterDescription('string', 'Maximum date/timestamp (yyyy-MM-dd HH:mm:ss) for DATE types.', 'DATETIME'), required: false, cliName: '-maxDate' },
+      { name: 'nameSeparator', type: 'string', description: enhanceParameterDescription('string', 'Separator for multi-value string parameters like colNames.'), required: false, cliName: '-nameSeparator' },
+    ],
+    category: 'Discovery',
+  },
+  {
+    toolName: 'discovery_group_copy',
+    description: 'Copies an existing Discovery Group and its attributes.',
+    baseCommand: 'copyDiscoveryGr',
+    params: [
+      { name: 'name', type: 'string', description: enhanceParameterDescription('string', 'Name of the Discovery Group to copy.'), required: true, cliName: '-name' },
+    ],
+    category: 'Discovery',
+  },
+  {
+    toolName: 'discovery_group_show_all',
+    description: 'Displays a list of all configured Discovery Groups.',
+    baseCommand: 'showDiscoveryGroups',
+    params: [],
+    category: 'Discovery',
+  },
+  {
+    toolName: 'discovery_group_show_one',
+    description: 'Shows detailed information for a specific Discovery Group, including its attributes.',
+    baseCommand: 'showDiscoveryGr',
+    params: [
+      { name: 'name', type: 'string', description: enhanceParameterDescription('string', 'Name of the Discovery Group to display.'), required: true, cliName: '-name' },
+    ],
+    category: 'Discovery',
+  },
+  {
+    toolName: 'discovery_attribute_show',
+    description: 'Shows detailed information for a specific discovery attribute within a group.',
+    baseCommand: 'showDiscoveryAttr',
+    params: [
+      { name: 'group', type: 'string', description: enhanceParameterDescription('string', 'Name of the Discovery Group.'), required: true, cliName: '-group' },
+      { name: 'name', type: 'string', description: enhanceParameterDescription('string', 'Name of the discovery attribute to display.'), required: true, cliName: '-name' },
+    ],
+    category: 'Discovery',
+  },
+  {
+    toolName: 'discovery_group_delete',
+    description: 'Deletes a specified Discovery Group and all its attributes.',
+    baseCommand: 'delDiscoveryGr',
+    params: [
+      { name: 'name', type: 'string', description: enhanceParameterDescription('string', 'Name of the Discovery Group to delete.'), required: true, cliName: '-name' },
+    ],
+    category: 'Discovery',
+  },
+  {
+    toolName: 'discovery_attribute_delete',
+    description: 'Deletes a specific discovery attribute from a Discovery Group.',
+    baseCommand: 'delDiscoveryAttr',
+    params: [
+      { name: 'group', type: 'string', description: enhanceParameterDescription('string', 'Name of the Discovery Group from which to delete the attribute.'), required: true, cliName: '-group' },
+      { name: 'name', type: 'string', description: enhanceParameterDescription('string', 'Name of the discovery attribute to delete.'), required: true, cliName: '-name' },
+    ],
+    category: 'Discovery',
+  },
+];

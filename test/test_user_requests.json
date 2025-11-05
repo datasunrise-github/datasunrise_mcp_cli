@@ -1,0 +1,1022 @@
+[
+    {
+        "command": "connect",
+        "user_request": "Connect to the DataSunrise server at 192.168.1.100 on port 11001 using HTTPS with login 'ds_admin' and password 'securePassword123'."
+    },
+    {
+        "command": "addHostGr",
+        "user_request": "Create a new host group named 'Production_Web_Servers' and add 'webserver01', 'webserver02', and the network 'Net_Prod_Web_10.10.0.0_24' to it."
+    },
+    {
+        "command": "addHost",
+        "user_request": "Add a new host entry named 'dev-db-server-01' with IP address 192.168.5.75."
+    },
+    {
+        "command": "addDiscoveryAttr",
+        "user_request": "To my 'PII_Data_V2' discovery group, add an attribute called 'User_Email_Addresses'. It should look for columns named 'email', 'user_email', or 'contact_email', and the content should match the regex pattern for email addresses. This search should be case-insensitive."
+    },
+    {
+        "command": "addDiscoveryGr",
+        "user_request": "Create a new Data Discovery Information Type called 'Customer_Financial_Data_Global' and associate it with the 'PCI DSS' and 'SOX' security standards."
+    },
+    {
+        "command": "addDirectSessionReportGen",
+        "user_request": "Generate a weekly report named 'MSSQL_Direct_DB_Access_Report' for the 'MSSQL_instance', detailing all direct sessions. Schedule this for every Monday at 4 AM and email the CSV to 'db_admins@example.com'."
+    },
+    {
+        "command": "addDbUserMapping",
+        "user_request": "Map the Active Directory user 'CORP\\peter_g' to the database user 'peter_griffin' on the 'PG_instance'. The database password for 'peter_griffin' is 'pgPassLois123'. Use the 'CorpAD_LDAP' LDAP server and SHA256 hash type."
+    },
+    {
+        "command": "addDbUserGr",
+        "user_request": "Create a database user group named 'MySQL_App_Users' for the 'MYSQL_instance' (MySQL type) and add users 'app_user_read', 'app_user_write' to it."
+    },
+    {
+        "command": "addDbUser",
+        "user_request": "Add a database user profile for 'report_svc_acct' which exists on the 'MSSQL_instance'."
+    },
+    {
+        "command": "addDataDiscoveryReportGen",
+        "user_request": "I need to set up a (deprecated) data discovery report task named 'Old_System_PII_Scan' for 'ORA_instance'. It should search for columns named 'SSN' or 'TaxID' using relevant regex patterns. Run this monthly on the 3rd at 2 AM."
+    },
+    {
+        "command": "addDSUser",
+        "user_request": "Create a new DataSunrise administrator user with login 'sec_analyst_jane', password 'SecureP@ssW0rdJane!', email 'jane.analyst@example.com', and assign them the 'SecurityAnalyst' role. This user should be allowed to log in from any IP in the 'Internal_Network_Group'."
+    },
+    {
+        "command": "addDDLTabRelLearnPerTask",
+        "user_request": "Set up a DDL table relation learning task named 'MSSQL_ERP_Schema_Relations' for the 'MSSQL_instance'. It should analyze stored procedures and views to discover relationships and store them in the 'ERP_Data_Model'. Run this task daily at 1 AM. Use login 'ds_schema_reader_mssql' with password 'readPassMSSQL789'."
+    },
+    {
+        "command": "addCefItem",
+        "user_request": "In the 'Critical_Events_CEF' group, add a new CEF item named 'Admin_Activity_Format'. This item should handle 'ADMIN_OPERATION' events and format them using the CEF string: 'CEF:0|DataSunrise|Admin|1.0|ADMIN_OPERATION|Admin Action|Medium|suser={adminUserName} act={actionPerformed} target={targetObject}'."
+    },
+    {
+        "command": "addCefGroup",
+        "user_request": "Create a new CEF group named 'Compliance_Log_Exports_ArcSight' and enable it."
+    },
+    {
+        "command": "addAuditRule",
+        "user_request": "Create an audit rule named 'Audit_SELECT_on_FINANCE_MYSQL' for the 'MYSQL_instance'. It should audit all SELECT statements on any table within the 'FINANCE' schema, regardless of user. Do not log bind variables or result sets. This rule should be active only during business hours as defined by the 'BusinessHours_9to5' schedule."
+    },
+    {
+        "command": "addAuditReportGen",
+        "user_request": "Configure an audit report named 'Weekly_Sensitive_Data_Access_ORA' for 'ORA_instance'. It should cover all access to tables in the 'HR_PII_Object_Group' by any user for the past week. Generate a PDF and send it to 'data_privacy_officer@example.com'."
+    },
+    {
+        "command": "addAppUserCapturingSetting",
+        "user_request": "For the 'ORA_instance', set up application user capturing named 'OracleFormsUserCapture'. Use the 'ORACLE_EBS' capturing type."
+    },
+    {
+        "command": "addApplication",
+        "user_request": "Register a new client application profile in DataSunrise named 'SAP_ERP_Client_v2'."
+    },
+    {
+        "command": "addAccessRole",
+        "user_request": "Create a new access role named 'DBA_Admin_FullAccess'."
+    },
+    {
+        "command": "showAccessRole",
+        "user_request": "Show me the details and permissions for the access role named 'ReadOnly_Auditors'."
+    },
+    {
+        "command": "showAccessRoles",
+        "user_request": "List all access roles configured in DataSunrise."
+    },
+    {
+        "command": "showActiveSessions",
+        "user_request": "Display all currently active database sessions across all instances."
+    },
+    {
+        "command": "showAppUserCapturingList",
+        "user_request": "Show all application user capturing settings configured for the 'PG_instance'."
+    },
+    {
+        "command": "showAppUserCapturingSetting",
+        "user_request": "Display the details of the application user capturing setting named 'WebAppUserCapture' for the 'MYSQL_instance'."
+    },
+    {
+        "command": "showApplication",
+        "user_request": "Show the profile details for the client application named 'HR_Portal_WebApp'."
+    },
+    {
+        "command": "showApplications",
+        "user_request": "List all client application profiles registered in DataSunrise."
+    },
+    {
+        "command": "showAuditBackups",
+        "user_request": "List all available audit backups. (I know this is deprecated, but I need to check something)."
+    },
+    {
+        "command": "showCefGroup",
+        "user_request": "Display the parameters for the CEF group named 'Security_Events_CEF'."
+    },
+    {
+        "command": "showCefGroups",
+        "user_request": "List all configured CEF groups."
+    },
+    {
+        "command": "showCoreState",
+        "user_request": "What is the current status of the DataSunrise Core process on server 'DS_Primary_Node' for worker 'worker1@127.0.0.1:11002'?"
+    },
+    {
+        "command": "showDbUser",
+        "user_request": "Show the profile details for the database user 'app_service_account' on 'MYSQL_instance'."
+    },
+    {
+        "command": "showDbUsers",
+        "user_request": "List all database user profiles defined in DataSunrise."
+    },
+    {
+        "command": "showDictionaryBackups",
+        "user_request": "Display a list of all available DataSunrise dictionary backups."
+    },
+    {
+        "command": "showDiscoveryAttr",
+        "user_request": "Show the details for the discovery attribute 'User_Email_Addresses' within the 'PII_Data_V2' discovery group."
+    },
+    {
+        "command": "showDiscoveryGr",
+        "user_request": "Display the details for the Data Discovery Information Type named 'Customer_Financial_Data_Global'."
+    },
+    {
+        "command": "showDiscoveryGroups",
+        "user_request": "List all Data Discovery Information Types configured in the system."
+    },
+    {
+        "command": "showDsServer",
+        "user_request": "Show the parameters for the DataSunrise server named 'DS_Primary_Node'."
+    },
+    {
+        "command": "showDsServers",
+        "user_request": "List all DataSunrise servers in my configuration."
+    },
+    {
+        "command": "showDsUser",
+        "user_request": "Display the details for the DataSunrise administrative user 'sec_analyst_jane'."
+    },
+    {
+        "command": "showDsUsers",
+        "user_request": "List all DataSunrise administrative users."
+    },
+    {
+        "command": "showEvent",
+        "user_request": "Show the full details for the event with session ID 'session123_abc', operation ID 'op456', and execution ID 'exec789'."
+    },
+    {
+        "command": "showEvents",
+        "user_request": "List all audit events for 'PG_instance' that occurred today between 9 AM and 5 PM, initiated by user 'postgres', involving SELECT queries on the 'public.sensitive_data' table."
+    },
+    {
+        "command": "delAccessRole",
+        "user_request": "Delete the access role named 'Temporary_Contractor_Role'."
+    },
+    {
+        "command": "delAppUserCapturingSetting",
+        "user_request": "Remove the application user capturing setting named 'OldWebAppCapture' from 'PG_instance'."
+    },
+    {
+        "command": "delApplication",
+        "user_request": "Delete the client application profile named 'Decommissioned_App_v1'."
+    },
+    {
+        "command": "delCefGroup",
+        "user_request": "Delete the CEF group named 'Test_SIEM_Export_Group'."
+    },
+    {
+        "command": "delDbUser",
+        "user_request": "Remove the database user profile for 'temp_dba_user' associated with 'ORA_instance'."
+    },
+    {
+        "command": "showCefItem",
+        "user_request": "Display the parameters for the CEF item 'Failed_Logins_Format' in the 'Security_Events_CEF' group."
+    },
+    {
+        "command": "showCefItems",
+        "user_request": "List all CEF items within the 'Audit_Log_Exports_Splunk' group."
+    },
+    {
+        "command": "delCefItem",
+        "user_request": "Delete the CEF item named 'Obsolete_Event_Format' from the 'Old_CEF_Group'."
+    },
+    {
+        "command": "delDbUserMapping",
+        "user_request": "Remove the AD user mapping for 'CORP\\tempuser' on 'MSSQL_instance' that uses the 'CorpAD_LDAP' server."
+    },
+    {
+        "command": "delDiscoveryAttr",
+        "user_request": "Delete the discovery attribute 'Old_Phone_Pattern' from the 'Legacy_PII' discovery group."
+    },
+    {
+        "command": "delDiscoveryGr",
+        "user_request": "Remove the Data Discovery Information Type named 'Archived_Project_Data'."
+    },
+    {
+        "command": "delDsServer",
+        "user_request": "Delete the DataSunrise server configuration named 'DR_Site_Server_Backup'."
+    },
+    {
+        "command": "delDsUser",
+        "user_request": "Delete the DataSunrise administrative user 'former_employee_login'."
+    },
+    {
+        "command": "delHost",
+        "user_request": "Remove the host entry named 'old-dev-server-ip' (192.168.10.5)."
+    },
+    {
+        "command": "delHostGr",
+        "user_request": "Delete the host group named 'Temporary_VPN_Access_Group'."
+    },
+    {
+        "command": "delInstance",
+        "user_request": "Delete the database instance configuration named 'Test_MYSQL_Instance_ToBeRemoved'."
+    },
+    {
+        "command": "delInterface",
+        "user_request": "Remove the network interface '10.0.5.12:1521' from the 'ORA_instance_Archive' instance."
+    },
+    {
+        "command": "delLdapServer",
+        "user_request": "Delete the LDAP server configuration named 'Decommissioned_AD_Controller'."
+    },
+    {
+        "command": "delLicense",
+        "user_request": "Remove the expired license key with ID 'LIC-EXPIRED-001'."
+    },
+    {
+        "command": "delLogTrail",
+        "user_request": "Delete the log trailing configuration for 'ORA_instance' on interface '10.0.1.20:1521' handled by 'DS_Server_Main'."
+    },
+    {
+        "command": "delObjectGroup",
+        "user_request": "Delete the object group named 'Temporary_Sensitive_Tables_Q1'."
+    },
+    {
+        "command": "delPerTask",
+        "user_request": "Delete the periodic task named 'Old_Backup_Dictionary_Job' of type 'Backup Dictionary'."
+    },
+    {
+        "command": "delProxy",
+        "user_request": "Remove the proxy listening on '0.0.0.0:15433' which targets the 'PG_instance' via interface 'localhost:5432'."
+    },
+    {
+        "command": "delQuery",
+        "user_request": "Remove the SQL query 'SELECT * FROM old_temp_table' from the 'AdHoc_Admin_Queries' query group."
+    },
+    {
+        "command": "delQueryGroup",
+        "user_request": "Delete the query group named 'Obsolete_Reporting_Queries'."
+    },
+    {
+        "command": "delReportGen",
+        "user_request": "Delete the report generation task named 'Old_Monthly_Audit_Summary'."
+    },
+    {
+        "command": "delRule",
+        "user_request": "Delete the audit rule named 'Temporary_Debug_Audit_Rule_PG'."
+    },
+    {
+        "command": "delSchedule",
+        "user_request": "Delete the schedule named 'Holiday_Freeze_Schedule_2023'."
+    },
+    {
+        "command": "delServer",
+        "user_request": "Delete the SMTP server configuration named 'Backup_SMTP_Relay'."
+    },
+    {
+        "command": "delSniffer",
+        "user_request": "Remove the sniffer on device 'eth1' for 'MYSQL_instance' interface '192.168.1.50:3306'."
+    },
+    {
+        "command": "delSslKeyGroup",
+        "user_request": "Delete the SSL Key Group named 'Expired_Wildcard_Cert_Group'."
+    },
+    {
+        "command": "delSsoService",
+        "user_request": "Delete the SSO service configuration named 'Old_Okta_Integration'."
+    },
+    {
+        "command": "delSubscriber",
+        "user_request": "Remove the subscriber named 'john.doe.leftcompany@example.com'."
+    },
+    {
+        "command": "delTag",
+        "user_request": "Remove the tag 'Project_Alpha_Obsolete' from the audit rule 'Audit_Project_Alpha_Activity'."
+    },
+    {
+        "command": "showAdDbUserMappings",
+        "user_request": "Show all Active Directory to Database User mappings for the 'MSSQL_instance'."
+    },
+    {
+        "command": "showDbUserGroup",
+        "user_request": "Display the details and members of the database user group 'PostgreSQL_Developers'."
+    },
+    {
+        "command": "showDbUsersGroups",
+        "user_request": "List all database user groups configured in DataSunrise."
+    },
+    {
+        "command": "updateAccessRole",
+        "user_request": "Update the access role 'ReadOnly_Auditors' to also include the Active Directory group 'CN=Additional_Auditors,DC=corp,DC=example,DC=com'."
+    },
+    {
+        "command": "updateAppUserCapturingSetting",
+        "user_request": "Modify the application user capturing setting 'WebAppUserCapture' for 'MYSQL_instance' to be case-sensitive and change the match pattern to 'X-AppUser: (\\w+)'."
+    },
+    {
+        "command": "updateApplication",
+        "user_request": "Rename the client application profile 'HR_Portal_WebApp' to 'HR_Portal_WebApp_v2'."
+    },
+    {
+        "command": "updateAuditReportGen",
+        "user_request": "Update the audit report task 'Monthly_DBA_Activity_PG'. Change the report format to CSV and add 'dba_team_lead@example.com' to the subscribers list."
+    },
+    {
+        "command": "updateAuditRule",
+        "user_request": "Modify the audit rule 'Audit_Admin_Queries_ORA' for 'ORA_instance' to also log data from SELECT statements and disable logging of bind variables. Also, change its schedule to 'Weekend_Only_Schedule'."
+    },
+    {
+        "command": "updateAuthMappingConfig",
+        "user_request": "For 'PG_instance', enable AD to DB user mapping, using the 'config' map type and 'LDAP' as the protocol. Ensure that only mapped users are accepted and require client-side SSL for LDAP mapping."
+    },
+    {
+        "command": "updateCefGroup",
+        "user_request": "Rename the CEF group 'Audit_Log_Exports_Splunk' to 'SIEM_Audit_Log_Exports_Splunk_Prod' and disable it temporarily."
+    },
+    {
+        "command": "updateCefItem",
+        "user_request": "For the CEF item 'Failed_Logins_Format' in group 'Security_Events_CEF', change the CEF string to 'CEF:0|DataSunrise|Security|1.0|LOGIN_FAILED|Failed Login Attempt|High|src={sourceAddress} suser={userName} msg={failureReason} dvc={deviceHostName}' and enable it."
+    },
+    {
+        "command": "updateDbUser",
+        "user_request": "Change the database user 'app_service_account' on 'MYSQL_instance' to be associated with 'MYSQL_instance_DR' instead."
+    },
+    {
+        "command": "updateDbUserGr",
+        "user_request": "For the database user group 'MySQL_App_Users', add 'new_app_user_admin' and remove 'app_user_read'. Also, rename the group to 'MySQL_Application_Service_Users'."
+    },
+    {
+        "command": "updateDsServer",
+        "user_request": "Update the DataSunrise server 'DS_Primary_Node' to use backend port 11005 and core port 11006. Ensure HTTPS is enabled for both."
+    },
+    {
+        "command": "updateInstance",
+        "user_request": "For the 'ORA_HR_Prod' instance, update the login to 'ds_monitor_new' and enable table relations analysis. Also, associate it with the 'HR_Production_Env' environment."
+    },
+    {
+        "command": "updateInterface",
+        "user_request": "Change the interface for 'PG_instance' from 'localhost:5432' to 'pg_primary_db_host:5432'."
+    },
+    {
+        "command": "updateLdapServer",
+        "user_request": "Update the LDAP server 'CorpAD_LDAP' to use 'ldaps://ad-primary.corp.example.com:636' as the host and set the login attribute to 'sAMAccountName'."
+    },
+    {
+        "command": "updateLearnRule",
+        "user_request": "Modify the learning rule 'Learn_PG_App_Behavior' for 'PG_instance'. Change it to save learned SQL queries into the 'PG_App_Learned_SQL' query group and learned users into the 'PG_App_Learned_Users' user group. Also, make it learn based on INSERT and UPDATE operations only."
+    },
+    {
+        "command": "updateMaskRule",
+        "user_request": "For the masking rule 'Mask_SSN_ORA_instance' on 'ORA_instance', change the masking type to 'fixedStr' with value 'XXX-XX-XXXX' for the column 'HR.EMPLOYEES.SSN'. Also, apply it only to users in the 'External_Auditors_Group'."
+    },
+    {
+        "command": "updateObjectGroup",
+        "user_request": "Update the object group 'Customer_PII_Tables_PG'. Add table 'public.customer_preferences' and remove 'public.old_customer_data'. Rename it to 'Active_Customer_PII_PG'."
+    },
+    {
+        "command": "updatePerCleanAudit",
+        "user_request": "Change the 'Daily_Audit_Cleanup' periodic task to run at 2 AM instead of 1 AM and keep audit data for 150 days instead of 180."
+    },
+    {
+        "command": "updatePerHealthCheck",
+        "user_request": "Modify the 'Hourly_PG_Instance_Health' periodic task for 'PG_instance' to also send errors to Events and use the 'WebCheck' test method against 'http://pg_instance_app/health'."
+    },
+    {
+        "command": "updatePerUpdateMetadata",
+        "user_request": "Update the 'Daily_Metadata_Refresh_MYSQL' periodic task for 'MYSQL_instance' to run every 6 hours instead of daily."
+    },
+    {
+        "command": "updatePerBackupDictionary",
+        "user_request": "Change the 'Nightly_Dictionary_Backup' task to also backup DataSunrise Users and execute '/opt/scripts/post_backup_notify.sh' after completion."
+    },
+    {
+        "command": "updatePerUserBehavior",
+        "user_request": "For the 'ORA_instance_User_Behavior_Analysis' task, adjust the training period to end on '2025-05-31' and set the reporting period type to 'lastNWeek' with a value of 2."
+    },
+    {
+        "command": "updatePerTestBucketAccess",
+        "user_request": "Update the 'S3_Finance_Bucket_Access_Test' periodic task for instance 'AWS_S3_Finance' to also include crawler task 'Finance_Data_Crawler' and skip duplicate buckets."
+    },
+    {
+        "command": "updateProxy",
+        "user_request": "For the 'PG_instance' (interface 'localhost:5432'), change the proxy that was listening on '0.0.0.0:15432' to now listen on '127.0.0.1:25432' and disable it temporarily. This proxy is on 'DS_Server_EastUS'."
+    },
+    {
+        "command": "updateQueryGroup",
+        "user_request": "Rename the query group 'AdHoc_Admin_Queries' to 'Approved_Admin_Maintenance_Queries'."
+    },
+    {
+        "command": "updateQueryOfGroup",
+        "user_request": "In the query group 'Approved_Admin_Maintenance_Queries', change the query 'SELECT * FROM old_temp_table' to 'SELECT id, name FROM current_config_table WHERE status = \\'active\\'' and ensure it's not treated as a regex."
+    },
+    {
+        "command": "updateRule",
+        "user_request": "Update the security rule 'Block_External_Access_MYSQL'. Change its action to 'Alert' instead of 'Block', and add 'security_alerts@example.com' to its subscribers list. Also, ensure it checks the next rule in the chain."
+    },
+    {
+        "command": "updateSchedule",
+        "user_request": "Modify the schedule 'BusinessHours_9to5' to be from 08:00:00 to 18:00:00 on weekdays (mo-fr) and rename it to 'Extended_Business_Hours'."
+    },
+    {
+        "command": "updateSecurityRule",
+        "user_request": "For the security rule 'Block_HR_Table_Access_ORA' on 'ORA_instance', change the block message to 'Access to HR tables is restricted. Contact IT Security.' and apply it only to users NOT in the 'HR_Admins_Group'."
+    },
+    {
+        "command": "updateServer",
+        "user_request": "Update the SMTP server configuration 'Main_SMTP' to use host 'new_smtp_relay.example.com', port 587, and enable TLS with StartTlsPreferred. The login is 'smtp_user' and password 'newSmtpP@ss'."
+    },
+    {
+        "command": "updateSniffer",
+        "user_request": "For the 'MYSQL_instance' (interface '192.168.1.50:3306'), update the sniffer on device 'eth1' to be disabled. This sniffer is on 'DS_Sniffer_Node'."
+    },
+    {
+        "command": "updateSslKeyGroup",
+        "user_request": "Update the SSL Key Group 'WebServer_SSL_Cert'. Replace the certificate with '/opt/certs/new_server.crt', the private key with '/opt/certs/new_server.key', and the CA cert with '/opt/certs/new_intermediate_ca.pem'. Rename it to 'WebServer_SSL_Cert_2025'."
+    },
+    {
+        "command": "updateSubscriber",
+        "user_request": "Change the subscriber 'ops-team@example.com' (named 'OpsTeamAlerts') to use the 'Secondary_SMTP' server and also subscribe them to 'CORE_ERROR' events with a filter for 'Severity=High'."
+    },
+    {
+        "command": "updateLicense",
+        "user_request": "Update the DataSunrise license key with the new key string 'NEWLIC-ENSEK-EYSTR-ING01-2345F'."
+    },
+    {
+        "command": "updateLicenses",
+        "user_request": "Upload and apply multiple license keys from the file 'C:\\Licenses\\datasunrise_new_licenses.reg'."
+    },
+    {
+        "command": "updateMetadata",
+        "user_request": "Force an update of the database metadata for the 'PG_instance' using login 'postgres' and password '1234'."
+    },
+    {
+        "command": "updateTag",
+        "user_request": "For the audit rule 'Audit_Admin_Queries_ORA', change the tag 'Environment:Staging' to 'Environment:Production_Audit'."
+    },
+    {
+        "command": "updateAuditReportGen",
+        "user_request": "Modify the 'Weekly_Sensitive_Data_Access_ORA' audit report task. Change the report period to 'lastNDay' with a value of 7, and update the data filter to 'DB_USER != \\'SYS\\''. Also, change the name to 'Weekly_NonSys_Sensitive_Access_ORA'."
+    },
+    {
+        "command": "updateSecurityReportGen",
+        "user_request": "Update the 'Daily_Security_Violations_MSSQL' security report task. Change the cron expression to run at 05:00 daily, and add 'infosec_manager@example.com' to subscribers. Rename to 'Daily_Security_Incidents_MSSQL_0500'."
+    },
+    {
+        "command": "updateMaskingReportGen",
+        "user_request": "For the 'Monthly_PII_Masking_Activity_PG' masking report task, change the report format to JSON and set it to compress with GZIP. Also, update the instance list to include 'PG_instance_Archive' and rename to 'Monthly_PII_Masking_Activity_PG_Archive_JSON'."
+    },
+    {
+        "command": "updateOperationErrorsReportGen",
+        "user_request": "Update the 'DB_Operation_Errors_ORA' report task. Change the grouping period to 30 minutes and limit the query length in the report to 500 characters. Rename to 'DB_Operation_Errors_ORA_Detailed'."
+    },
+    {
+        "command": "updateSessionReportGen",
+        "user_request": "Modify the 'All_Sessions_Report_MYSQL' task. Change the session report type to 'Error sessions' only and set the report period to 'currentDay'. Rename to 'Daily_Error_Sessions_MYSQL'."
+    },
+    {
+        "command": "updateSystemEventsReportGen",
+        "user_request": "Update the 'System_Events_Summary_DS_Primary' task. Change the cron expression to run every 6 hours (e.g., '0 */6 * * *') and add 'ds_admins_group@example.com' to subscribers. Rename to 'Quarterly_System_Events_DS_Primary'."
+    },
+    {
+        "command": "updateDirectSessionReportGen",
+        "user_request": "For the 'MSSQL_Direct_DB_Access_Report' task on 'MSSQL_instance', change the report period to 'lastNWeek' with a value of 1, and update the cron expression to run on Sundays at 03:00. Rename to 'Weekly_Direct_Access_MSSQL_Sun0300'."
+    },
+    {
+        "command": "updateInstStatusReportGen",
+        "user_request": "Update the 'Daily_Instance_Health_Check' task. Change the report format to CSV and ensure it's enabled. Rename to 'Daily_Instance_Health_CSV'."
+    },
+    {
+        "command": "updatePerAzureRemoveServ",
+        "user_request": "Update the 'Cleanup_Unused_Azure_SQL_Dev' periodic task. Change its schedule to run on the first Sunday of each month at 01:00 and rename it to 'Monthly_Azure_SQL_Dev_Cleanup'."
+    },
+    {
+        "command": "updatePerKuberRemoveServ",
+        "user_request": "Modify the 'K8s_Dev_Namespace_Cleanup' task to also include the 'staging-apps' namespace and change its frequency to run every Monday at 02:00."
+    },
+    {
+        "command": "updatePerDbUserSync",
+        "user_request": "Update the 'Sync_ORA_EBS_Users_Daily' task. Change the user group to 'EBS_Finance_Users_Updated' and add 'AR_Specialist' to the responsibilities. Also, change the LDAP server to 'New_LDAP_Server_Config'."
+    },
+    {
+        "command": "updatePerTestBucketAccess",
+        "user_request": "For the 'Test_S3_Marketing_Bucket_Access' task, remove the 'Website_Analytics_Crawler' and change the schedule to run daily at 05:00."
+    },
+    {
+        "command": "updatePerVulnAssessment",
+        "user_request": "Modify the 'Quarterly_Security_Scan_All_DBs' vulnerability assessment task. Remove 'MYSQL_instance' from the assessed instances and change the report format to JSON."
+    },
+    {
+        "command": "updateInstanceCredentials",
+        "user_request": "Update the database credentials for the 'PG_instance'. The new login is 'postgres_admin' and the new password is 'SuperSecurePGP@ssw0rd'."
+    },
+    {
+        "command": "updateLogTrail",
+        "user_request": "Update the log trailing configuration for 'ORA_instance' on interface '10.0.1.20:1521' (server 'DS_Server_Main'). Change the connection type to 'Local Folder', set the local path to '/mnt/oracle_audit_logs', and enable deletion of processed logs."
+    },
+    {
+        "command": "updateDiscoveryAttr",
+        "user_request": "For the discovery attribute 'User_Email_Addresses' in group 'PII_Data_V2', change the column name search to include 'contact_address' and make the content template regex stricter: '^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$'."
+    },
+    {
+        "command": "updateDiscoveryGr",
+        "user_request": "Update the Data Discovery Information Type 'Customer_Financial_Data_Global'. Remove the 'SOX' security standard and rename it to 'Customer_PCI_Financial_Data'."
+    },
+    {
+        "command": "updatePerDiscovery",
+        "user_request": "Modify the data discovery task 'Weekly_PII_Scan_ProdDB' for 'ORA_instance'. Change the search to include Information Type 'PHI_Data', set the minimum match percentage to 90%, and exclude tables 'LOGS.AUDIT_TRAIL_ARCHIVE'."
+    },
+    {
+        "command": "importApplications",
+        "user_request": "Import a list of client applications from the CSV file located at 'C:/DataSunrise_Config/new_apps.csv'."
+    },
+    {
+        "command": "addSecurityReportGen",
+        "user_request": "Create a security report task named 'Weekly_High_Severity_Alerts_ORA' for 'ORA_instance'. Schedule it for every Sunday at 1 AM, report on events from the last 7 days, generate a PDF, and email it to 'security_team@example.com' using 'Main_SMTP'."
+    },
+    {
+        "command": "addMaskingReportGen",
+        "user_request": "Set up a masking report named 'Monthly_PII_Masking_Summary_PG' for 'PG_instance'. This report should run on the 1st of every month at 5 AM, cover all masking rules, and output a JSON file."
+    },
+    {
+        "command": "addOperationErrorsReportGen",
+        "user_request": "Create a report task 'DB_Operation_Errors_Daily_MSSQL' for 'MSSQL_instance' to log all database operation errors. Run it daily at 6 AM and store the CSV output."
+    },
+    {
+        "command": "addSystemEventsReportGen",
+        "user_request": "Configure a system events report named 'DS_System_Events_Hourly_Critical'. It should run every hour, focusing on critical system events, and send notifications via Syslog using the 'SIEM_Syslog_CEF_Group'."
+    },
+    {
+        "command": "importHosts",
+        "user_request": "Import a list of hosts from the CSV file 'C:/DataSunrise_Config/network_segment_hosts.csv'."
+    },
+    {
+        "command": "importUsers",
+        "user_request": "Import database user profiles from 'C:/DataSunrise_Config/db_user_list_finance.csv'."
+    },
+    {
+        "command": "addInterface",
+        "user_request": "Add a new network interface '10.0.2.55:1521' to the 'ORA_instance_DR' Oracle instance."
+    },
+    {
+        "command": "addLdapServer",
+        "user_request": "Configure a new LDAP server named 'Secondary_AD_Auth'. The host is 'ad-secondary.corp.example.com', port 389, base DN 'DC=corp,DC=example,DC=com'. Use login 'ldap_bind_user' with password 'LdapBindPass!' and enable SSL."
+    },
+    {
+        "command": "addObjectGroup",
+        "user_request": "Create an object group named 'Sensitive_Customer_Data_PG' for the 'PG_instance'. Include tables 'public.customers.personal_info', 'public.customers.contact_details', and all columns under 'public.orders.payment_info'."
+    },
+    {
+        "command": "addPerCleanAudit",
+        "user_request": "Set up a periodic audit cleaning task named 'Monthly_Audit_Log_Cleanup'. It should run on the 1st of each month at midnight, keep data for 90 days, and then delete older data."
+    },
+    {
+        "command": "addPerHealthCheck",
+        "user_request": "Create a health check task named 'ORA_Instance_Connectivity_Check' for 'ORA_instance'. Run it every 15 minutes and send errors to Events. Test by executing a system query."
+    },
+    {
+        "command": "addPerUpdateMetadata",
+        "user_request": "Schedule a periodic metadata update for 'MYSQL_instance' named 'MYSQL_Metadata_Sync_Daily'. Run it daily at 3:30 AM."
+    },
+    {
+        "command": "addPerBackupDictionary",
+        "user_request": "Create a daily dictionary backup task named 'Daily_DS_Config_Backup' for the DataSunrise server 'DS_Primary_Node'. Backup objects, settings, and users. Run at 2:15 AM."
+    },
+    {
+        "command": "addPerUserBehavior",
+        "user_request": "Set up a user behavior analysis task for 'MSSQL_instance' named 'MSSQL_User_Behavior_Learning'. The training period is from '2025-01-01' to '2025-03-31'. Schedule it to run weekly on Sundays."
+    },
+    {
+        "command": "addProxy",
+        "user_request": "Add a new proxy for 'PG_instance' on its interface 'localhost:5432'. The proxy should listen on '0.0.0.0:25432' and be hosted on 'DS_Server_WestUS'."
+    },
+    {
+        "command": "addQueryOfGroup",
+        "user_request": "Add the SQL query 'SELECT cfg_value FROM app_config WHERE cfg_key = \\'FEATURE_FLAG_X\\';' to the 'Application_Config_Queries' query group. Do not treat it as a regular expression."
+    },
+    {
+        "command": "addQueryGroup",
+        "user_request": "Create a new query group named 'DBA_Maintenance_Scripts'."
+    },
+    {
+        "command": "addRule",
+        "user_request": "Add a generic security rule named 'Block_Common_Attack_Patterns_ANYDB' for 'ANY' database type on 'ANY' instance. It should block queries matching SQL injection filter type with an error level of 8. Log to storage and send to 'SIEM_Syslog_CEF_Group'."
+    },
+    {
+        "command": "addLearnRule",
+        "user_request": "Create a learning rule named 'Learn_MYSQL_WebApp_Activity' for 'MYSQL_instance' when accessed by application 'WebApp_CRM'. Learn SELECT, INSERT, UPDATE operations. Save learned SQL to 'WebApp_CRM_SQL' group and users to 'WebApp_CRM_Users' group."
+    },
+    {
+        "command": "addMaskRule",
+        "user_request": "Add a masking rule named 'Mask_Patient_DOB_MSSQL' for 'MSSQL_instance'. It should mask the 'Patients.DateOfBirth' column using 'empty' masking type for all users in the 'External_Researchers' group."
+    },
+    {
+        "command": "addSecurityRule",
+        "user_request": "Create a security rule named 'Block_DELETE_from_ORDERS_PG' for 'PG_instance'. It should block any DELETE statement on the 'public.orders' table from users not in the 'OrderAdmins' group. Log the event and send an alert to 'db_security_alerts@example.com'."
+    },
+    {
+        "command": "addSchedule",
+        "user_request": "Define a new schedule named 'AfterHours_Maintenance_Window'. It should be active from Saturday 10 PM to Sunday 6 AM (sa=22:00:00-23:59:59;su=00:00:00-06:00:00) starting next week."
+    },
+    {
+        "command": "addServer",
+        "user_request": "Configure a new SMTP server in DataSunrise named 'Office365_SMTP'. Host is 'smtp.office365.com', port 587. Use login 'notifications@example.com' with password 'Office365Pass!', mail from 'notifications@example.com', and enable StartTLS (cert type 'StartTlsPreferred')."
+    },
+    {
+        "command": "addSniffer",
+        "user_request": "Add a sniffer for the 'MYSQL_instance' on its interface '192.168.1.70:3306'. The sniffer should use network device 'eth0' on DataSunrise server 'DS_Sniffer_Node01'."
+    },
+    {
+        "command": "addSslKeyGroup",
+        "user_request": "Create an SSL Key Group named 'PG_Proxy_SSL_Frontend'. It's for a Proxy. Use CA cert '/opt/ds_certs/internal_ca.pem', server cert '/opt/ds_certs/pg_proxy_frontend.crt', and private key '/opt/ds_certs/pg_proxy_frontend.key'."
+    },
+    {
+        "command": "addSubscriber",
+        "user_request": "Add a new subscriber named 'DBA_Team_Pager' using the 'SNMP_Trap_Server' server. Send notifications to '10.10.20.5:162' for events 'INSTANCE_DOWN' and 'CORE_ERROR'."
+    },
+    {
+        "command": "arbitrary",
+        "user_request": "Execute an arbitrary command using the function 'getSystemStatus' with JSON content '{\"detailLevel\":\"full\",\"component\":\"core\"}'."
+    },
+    {
+        "command": "callRPC",
+        "user_request": "Execute the RPC defined in the JSON file 'C:/DataSunrise_Scripts/create_complex_rule.json'. Replace variables in the JSON with OS environment variables."
+    },
+    {
+        "command": "changePwd",
+        "user_request": "Change the password for the DataSunrise admin user 'ds_admin'. The current password is 'oldAdminPass123' and the new password should be 'NewAdminP@ssw0rd2025'."
+    },
+    {
+        "command": "cleanAudit",
+        "user_request": "Clean all audit data from the Audit Storage. Force the operation without confirmation, even if core processes are running, and use the 'deleteAll' method."
+    },
+    {
+        "command": "cleanDictionary",
+        "user_request": "Clean the DataSunrise dictionary, removing all objects, rules, and user entries. Force this operation and restart the Core afterwards."
+    },
+    {
+        "command": "copyDiscoveryGr",
+        "user_request": "Make a copy of the Data Discovery Information Type 'Global_PII_Definition_v1' and name the copy 'Global_PII_Definition_v1_Backup'."
+    },
+    {
+        "command": "changeParameter",
+        "user_request": "Change the DataSunrise system parameter 'AgentPort' to '12346' on server 'DS_Primary_Node'."
+    },
+    {
+        "command": "changeStorage",
+        "user_request": "Change the audit storage to use a PostgreSQL database at 'localhost:5432', database 'audit_main', schema 'datasunrise_audit', with user 'ds_audit_writer', password 'AuditWriterPass789'."
+    },
+    {
+        "command": "createAuditRotation",
+        "user_request": "Manually create a new audit.db file copy for audit rotation right now."
+    },
+    {
+        "command": "createDictionaryBackup",
+        "user_request": "Create an immediate backup of the DataSunrise system dictionary, including objects, settings, and users."
+    },
+    {
+        "command": "delDbUserGr",
+        "user_request": "Delete the database user group named 'Old_Dev_Team_MSSQL'."
+    },
+    {
+        "command": "disableDbUserMapping",
+        "user_request": "Disable Active Directory to Database User mapping for the 'ORA_instance'."
+    },
+    {
+        "command": "disconnect",
+        "user_request": "Disconnect from the current DataSunrise server session without confirmation."
+    },
+    {
+        "command": "enableDbUserMapping",
+        "user_request": "Enable Active Directory to Database User mapping for 'MSSQL_instance'. Use 'file' as mapType with filename 'mssql_ad_mappings.txt'. The mapping protocol should be Kerberos, accept only mapped users, and do not require client-side SSL."
+    },
+    {
+        "command": "isNeedRestart",
+        "user_request": "Check if a restart of DataSunrise services is needed due to recent configuration changes."
+    },
+    {
+        "command": "flush",
+        "user_request": "Flush the DataSunrise backend data and send a synchronization command to the Core for worker 'proxy_worker_pg@127.0.0.1:15432' on server 'DS_Server_WestUS'."
+    },
+    {
+        "command": "grantAllPermToRole",
+        "user_request": "Grant all available permissions to the access role 'SuperAdmin_Temporary'."
+    },
+    {
+        "command": "grantPermToRole",
+        "user_request": "For the access role 'Auditor_Role_PG', grant 'View' permissions on 'Audit Rules' and 'Events', and 'Execute' permission on 'View Event Description'."
+    },
+    {
+        "command": "restart",
+        "user_request": "Forcefully restart the DataSunrise Core process for worker 'core_main@DS_Primary_Node:11002' on server 'DS_Primary_Node'."
+    },
+    {
+        "command": "setAuditRotation",
+        "user_request": "Switch DataSunrise to read audit data from the audit.db copy with ID 'audit_backup_20250515_archive'."
+    },
+    {
+        "command": "recoverDictionary",
+        "user_request": "Recover the DataSunrise dictionary from the backup with ID 'FullConfigBackup_2025_04_01_03_00_00' located on server 'DS_Backup_Server'."
+    },
+    {
+        "command": "restartStatMasking",
+        "user_request": "Restart the static masking task with ID 'SM_TASK_ORA_FINANCE_20250510_001'."
+    },
+    {
+        "command": "revokeAllPermFromRole",
+        "user_request": "Revoke all permissions from the access role 'Intern_Access_Limited'."
+    },
+    {
+        "command": "revokePermFromRole",
+        "user_request": "From the 'DB_Operator_Role', revoke 'Delete' permissions on 'Database Instances' and 'Edit' permissions on 'Rules'."
+    },
+    {
+        "command": "setPermissionsToRole",
+        "user_request": "Set the exact permissions for the role 'AppSupport_Tier1'. Grant 'View' on 'Database Instances', 'Sessions', 'Events', and 'Execute' on 'View Session Description'. All other permissions should be revoked."
+    },
+    {
+        "command": "showAuditRotations",
+        "user_request": "Display all available audit.db file copies (audit rotations)."
+    },
+    {
+        "command": "showAdminQueryTypes",
+        "user_request": "List all types of administrative queries recognized by DataSunrise."
+    },
+    {
+        "command": "showSslKeyGroups",
+        "user_request": "Display a list of all configured SSL Key Groups."
+    },
+    {
+        "command": "showSslKeyGroup",
+        "user_request": "Show the details for the SSL Key Group named 'Database_Backend_Encryption_ORA'."
+    },
+    {
+        "command": "showPerTask",
+        "user_request": "Display the details for the periodic task named 'Daily_Audit_Cleanup' of type 'Clean Audit'."
+    },
+    {
+        "command": "showReportGen",
+        "user_request": "Show the configuration details for the report generation task named 'Weekly_Sensitive_Data_Access_ORA'."
+    },
+    {
+        "command": "showReportsGen",
+        "user_request": "List all configured report generation tasks."
+    },
+    {
+        "command": "showTag",
+        "user_request": "Display the details of the tag 'Compliance:PCI' on the audit rule 'Audit_Cardholder_Data_Access_MYSQL'."
+    },
+    {
+        "command": "showTagged",
+        "user_request": "Show all entities that have the tag with key 'Environment' and value 'Production'."
+    },
+    {
+        "command": "showTags",
+        "user_request": "List all tags associated with the periodic task 'Monthly_PII_Scan_All_DBs'."
+    },
+    {
+        "command": "showUntagged",
+        "user_request": "List all rules that do not have any tag with the key 'ReviewedBy'."
+    },
+    {
+        "command": "showHost",
+        "user_request": "Display the details for the host entry named 'appserver-prod-03.example.com'."
+    },
+    {
+        "command": "showHostGr",
+        "user_request": "Show the members and details of the host group 'DMZ_Servers_Network'."
+    },
+    {
+        "command": "showHosts",
+        "user_request": "List all configured hosts, networks, and IP ranges."
+    },
+    {
+        "command": "showInstances",
+        "user_request": "List all database instances configured in DataSunrise."
+    },
+    {
+        "command": "showInstance",
+        "user_request": "Display the configuration details for the database instance named 'PG_instance'."
+    },
+    {
+        "command": "showInterface",
+        "user_request": "Show details for the network interface '10.0.2.55:1521' of the 'ORA_instance_DR' instance."
+    },
+    {
+        "command": "showInterfaces",
+        "user_request": "List all network interfaces configured for the 'MSSQL_instance'."
+    },
+    {
+        "command": "showLdapServer",
+        "user_request": "Display the configuration of the LDAP server named 'CorpAD_LDAP'."
+    },
+    {
+        "command": "showLdapServers",
+        "user_request": "List all LDAP server configurations."
+    },
+    {
+        "command": "showNetDevices",
+        "user_request": "List all available network devices and their IP addresses on the DataSunrise server."
+    },
+    {
+        "command": "showObjectGroups",
+        "user_request": "List all object groups defined in DataSunrise."
+    },
+    {
+        "command": "showObjectGroup",
+        "user_request": "Display the contents (members) of the object group 'Financial_Report_Tables_ORA'."
+    },
+    {
+        "command": "showParameters",
+        "user_request": "Display all system parameters and their current values on the DataSunrise server 'DS_Primary_Node'."
+    },
+    {
+        "command": "showProxies",
+        "user_request": "List all proxies configured for the 'PG_instance' on its interface 'localhost:5432'."
+    },
+    {
+        "command": "showProxy",
+        "user_request": "Show details for the proxy listening on '127.0.0.1:25432' for 'PG_instance' (interface 'localhost:5432')."
+    },
+    {
+        "command": "showQueryGroups",
+        "user_request": "List all SQL query groups."
+    },
+    {
+        "command": "showQueryGroup",
+        "user_request": "Display the SQL queries contained in the query group 'DBA_Maintenance_Scripts'."
+    },
+    {
+        "command": "showQueryTypes",
+        "user_request": "List all recognized SQL query types that can be used in rule definitions."
+    },
+    {
+        "command": "showRules",
+        "user_request": "List all security rules configured for the 'ORA_instance'."
+    },
+    {
+        "command": "showRule",
+        "user_request": "Display the full configuration of the audit rule named 'Audit_SELECT_on_FINANCE_MYSQL'."
+    },
+    {
+        "command": "showServers",
+        "user_request": "List all configured notification servers (SMTP, SNMP, etc.)."
+    },
+    {
+        "command": "showServer",
+        "user_request": "Display the configuration details for the SMTP server named 'Main_SMTP'."
+    },
+    {
+        "command": "showSession",
+        "user_request": "Show the details for database session with ID 'SID_PG_16789_T12345'."
+    },
+    {
+        "command": "showSchedules",
+        "user_request": "List all configured schedules."
+    },
+    {
+        "command": "showSchedule",
+        "user_request": "Display the time intervals and settings for the schedule named 'Weekend_Maintenance_Window'."
+    },
+    {
+        "command": "showSniffer",
+        "user_request": "Show details for the sniffer on device 'eth0' for 'MYSQL_instance' interface '192.168.1.70:3306' on server 'DS_Sniffer_Node01'."
+    },
+    {
+        "command": "showStatMasking",
+        "user_request": "Show the status and configuration of the static masking task with ID 'SM_TASK_ORA_FINANCE_20250510_001'. Also, save its configuration to 'C:/Masking_Tasks/ORA_Finance_SM_Config.json'."
+    },
+    {
+        "command": "showSubscribers",
+        "user_request": "List all configured notification subscribers."
+    },
+    {
+        "command": "showSubscriber",
+        "user_request": "Display the details for the subscriber named 'DBA_Team_Pager'."
+    },
+    {
+        "command": "showSystemErrors",
+        "user_request": "Show all DataSunrise system errors that occurred in the last 24 hours (e.g., from '2025-06-08 17:00:00' to '2025-06-09 17:00:00')."
+    },
+    {
+        "command": "showThroughputHistory",
+        "user_request": "Display the DataSunrise throughput history for the past week (e.g., from '2025-06-02 00:00:00' to '2025-06-09 00:00:00')."
+    },
+    {
+        "command": "showWorkers",
+        "user_request": "List all available workers on the DataSunrise server 'DS_ClusterNode_2'."
+    },
+    {
+        "command": "stop",
+        "user_request": "Forcefully stop the DataSunrise Core process for worker 'core_critical_db@DS_Primary_Node:11002' on server 'DS_Primary_Node' without confirmation."
+    },
+    {
+        "command": "start",
+        "user_request": "Forcefully start the DataSunrise Core process for worker 'core_main@DS_Primary_Node:11002' on server 'DS_Primary_Node'."
+    },
+    {
+        "command": "statMask",
+        "user_request": "Start a static masking task. Source is 'ORA_instance' (login 'system', password '11111qQ!'), target is 'ORA_instance_Masked_Copy' (login 'masked_admin', password 'MaskedPass!'). Use table configuration from 'C:/Masking_Configs/finance_tables_mask.json'. Create target tables and indexes if they don't exist, and truncate target tables before masking."
+    },
+    {
+        "command": "updateHost",
+        "user_request": "Update the host entry 'dev-db-server-01'. Change its IP address to '192.168.5.77' and rename it to 'dev-db-server-01-newip'."
+    },
+    {
+        "command": "updateHostGr",
+        "user_request": "For the host group 'Production_Web_Servers', add 'webserver03' and remove 'webserver01'. Rename the group to 'Active_Production_Web_Servers'."
+    },
+    {
+        "command": "addLogTrail",
+        "user_request": "Add a log trailing configuration for 'MSSQL_instance' on interface 'mssql_host.corp:1433'. The format type is 'XML', connection type is 'SMB' to host '\\\\audit_share\\mssql_logs' path 'SQLAudits\\', using login 'corp\\audit_reader' and password 'AuditReadP@ss'. This is on 'DS_LogProcessor_Server'."
+    },
+    {
+        "command": "showLogTrail",
+        "user_request": "Display the log trailing configuration for 'MSSQL_instance' on interface 'mssql_host.corp:1433'."
+    },
+    {
+        "command": "addPerVulnAssessment",
+        "user_request": "Create a weekly vulnerability assessment task named 'Weekly_DB_Security_Scan_All'. It should scan 'PG_instance', 'MYSQL_instance', and 'ORA_instance'. Run every Saturday at 11 PM and send PDF reports to 'vuln_management@example.com'."
+    },
+    {
+        "command": "addQueryHisTabRelLearnPerTask",
+        "user_request": "Set up a query history table relation learning task for 'PG_instance' named 'PG_Learn_Query_Relations'. Store results in 'PG_Dynamic_Data_Model'. Process DML for columns in 'public.transactions.item_id' and skip DML for 'public.logs.*'. Run this task nightly at 2 AM."
+    },
+    {
+        "command": "addPerAzureRemoveServ",
+        "user_request": "Create a periodic task named 'Azure_Orphan_SQL_Cleanup_Monthly' for the Azure SQL instance 'AZ_SQL_DEV_Instance' to remove unused servers. Schedule it for the 2nd day of each month at 3 AM."
+    },
+    {
+        "command": "addPerKuberRemoveServ",
+        "user_request": "Add a periodic task 'K8s_Cleanup_Prod_Namespace' to remove unused Kubernetes servers in the 'production-apps' namespace. Run this daily at 4 AM."
+    },
+    {
+        "command": "addPerDbUserSync",
+        "user_request": "Create a DB user synchronization task for 'ORA_instance' named 'Sync_Oracle_EBS_Users'. Source users from 'Oracle EBS', distribute by responsibilities 'GL_USER;AP_USER', and add them to the 'EBS_Finance_Users' group. Run daily at 5 AM."
+    },
+    {
+        "command": "cancelTask",
+        "user_request": "Cancel the currently running periodic task 'Long_Running_Data_Discovery_Prod' of type 'Periodic Data Discovery'."
+    },
+    {
+        "command": "executePeriodicTask",
+        "user_request": "Manually execute the periodic task 'OnDemand_Dictionary_Backup' of type 'Backup Dictionary' right now."
+    },
+    {
+        "command": "exportResourceGroup",
+        "user_request": "Export the resource group 'Production_ORA_Config' to a template named 'Prod_Oracle_Template_v1' in JSON format. Include audit rules 'ORA_Audit_All, ORA_Audit_Admin' and security rule 'ORA_Block_Public_Access'."
+    },
+    {
+        "command": "deployResourceGroupFromTemplate",
+        "user_request": "Deploy a resource group named 'Staging_ORA_Config_From_Template' using the template 'Prod_Oracle_Template_v1'. Use parameters from the file 'C:/DS_Templates/staging_params.json'."
+    },
+    {
+        "command": "traceAuditCounters",
+        "user_request": "Trace audit counters for worker 'proxy_main@DS_Primary_Node:15001' on server 'DS_Primary_Node'."
+    },
+    {
+        "command": "connectOAuth2",
+        "user_request": "Connect to the DataSunrise server 'datasunrise.corp.example.com' on port 443 (HTTPS) using the OAuth2 access token 'eyJhbGciOiJSUzI1NiIsImtpZCI6IjEifQ... (truncated)'."
+    },
+    {
+        "command": "addSsoService",
+        "user_request": "Add a new SSO service configuration named 'AzureAD_SAML_Auth'. Type is 'SAML', action is 'Create or Update User Based on Response'. Entity ID is 'https://datasunrise.corp.example.com/saml/metadata', Assertion Consumer Service Endpoint is 'https://datasunrise.corp.example.com/saml/acs'. Use XML metadata from file 'C:/SSO_Config/azure_ad_metadata.xml' and assign the 'AD_User_Role'."
+    },
+    {
+        "command": "updateSsoService",
+        "user_request": "Update the SSO service 'Okta_OIDC_Auth'. Change the OIDC Client Secret to 'new_client_s3cr3t_val' and update the role to 'OIDC_User_Role_Updated'."
+    },
+    {
+        "command": "showSsoService",
+        "user_request": "Display the settings for the SSO service configuration named 'AzureAD_SAML_Auth'."
+    },
+    {
+        "command": "showLicense",
+        "user_request": "Display the details for the DataSunrise license key with ID 'DS-MAIN-PROD-LICENSE-001'."
+    },
+    {
+        "command": "showLicenses",
+        "user_request": "List all currently installed DataSunrise license keys."
+    },
+    {
+        "command": "restartBackend",
+        "user_request": "Restart the DataSunrise backend process on the server 'DS_Primary_Node' without forcing confirmation."
+    },
+    {
+        "command": "addPerDataDiscovery",
+        "user_request": "Create a periodic data discovery task named 'Scan_Customer_DB_for_CC_PG'. Target 'PG_instance', search for information types 'CreditCardNumbers' and 'SSN'. Run this task weekly on Sunday at 2 AM. Use login 'discover_user' with password 'DiscoverP@ss1'. Save results to object group 'CC_Scan_Results_PG'. Report in PDF to 'compliance@example.com'."
+    },
+    {
+        "command": "showAuditRotationsList",
+        "user_request": "Show me the list of all available audit data rotations (audit.db copies)."
+    }
+]

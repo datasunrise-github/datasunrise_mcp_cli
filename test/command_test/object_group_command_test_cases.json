@@ -1,0 +1,50 @@
+[
+  {
+    "description": "object_group_add: valid",
+    "toolName": "object_group_add",
+    "inputArgs": {
+      "name": "SensitiveTables_HR"
+    },
+    "expectedCliParams": ["-name SensitiveTables_HR"]
+  },
+  {
+    "description": "object_group_update: valid, only newName",
+    "toolName": "object_group_update",
+    "inputArgs": {
+      "name": "SensitiveTables_HR",
+      "newName": "HR_PII_Tables"
+    },
+    "expectedCliParams": ["-name SensitiveTables_HR", "-newName HR_PII_Tables"]
+  },
+  {
+    "description": "object_group_update: valid, no optional params (no change)",
+    "toolName": "object_group_update",
+    "inputArgs": {
+      "name": "HR_PII_Tables"
+    },
+    "expectedCliParams": ["-name HR_PII_Tables"],
+    "absentCliParams": ["-newName"]
+  },
+  {
+    "description": "object_group_show_all: valid (no params)",
+    "toolName": "object_group_show_all",
+    "inputArgs": {},
+    "expectedCliParams": []
+  },
+  {
+    "description": "object_group_show_one: valid",
+    "toolName": "object_group_show_one",
+    "inputArgs": {
+      "name": "HR_PII_Tables"
+    },
+    "expectedCliParams": ["-name HR_PII_Tables"]
+  },
+  {
+    "description": "object_group_delete: valid",
+    "toolName": "object_group_delete",
+    "inputArgs": {
+      "name": "HR_PII_Tables"
+    },
+    "expectedCliParams": ["-name HR_PII_Tables"]
+  }
+]

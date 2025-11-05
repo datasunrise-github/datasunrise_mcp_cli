@@ -1,0 +1,59 @@
+{
+  "name": "datasunrise-cli-mcp",
+  "version": "0.2.0",
+  "description": "Datasunrise config, manage, reporting with cross-platform support",
+  "private": true,
+  "type": "module",
+  "bin": {
+    "datasunrise-cli-mcp": "./build/src/index.js"
+  },
+  "files": [
+    "build"
+  ],
+  "scripts": {
+    "build": "tsc --diagnostics && node scripts/post-build.js",
+    "prepare": "npm run build",
+    "watch": "tsc --watch",
+    "inspector": "npx @modelcontextprotocol/inspector build/src/index.js",
+    "test": "mocha \"build/test/command_test/*_tester.js\"",
+    "test:description": "mocha build/test/command_test/test_description_registry.js",
+    "test:platform-escaping": "node build/test/command_test/test_platform_character_escaping.js",
+    "test:all": "npm run build && npm run test",
+    "test:instance-commands": "npm run build && node build/test/command_test/instance_command_tester.js",
+    "test:application-commands": "npm run build && node build/test/command_test/application_command_tester.js",
+    "test:cef-commands": "npm run build && node build/test/command_test/cef_command_tester.js",
+    "test:core-commands": "npm run build && node build/test/command_test/core_command_tester.js",
+    "test:db-user-commands": "npm run build && node build/test/command_test/db_user_command_tester.js",
+    "test:dictionary-commands": "npm run build && node build/test/command_test/dictionary_command_tester.js",
+    "test:discovery-commands": "npm run build && node build/test/command_test/discovery_command_tester.js",
+    "test:ds-user-commands": "npm run build && node build/test/command_test/ds_user_command_tester.js",
+    "test:host-commands": "npm run build && node build/test/command_test/host_command_tester.js",
+    "test:import-commands": "npm run build && node build/test/command_test/import_command_tester.js",
+    "test:license-commands": "npm run build && node build/test/command_test/license_command_tester.js",
+    "test:object-group-commands": "npm run build && node build/test/command_test/object_group_command_tester.js",
+    "test:parameters-commands": "npm run build && node build/test/command_test/parameters_command_tester.js",
+    "test:periodic-task-commands": "npm run build && node build/test/command_test/periodic_task_command_tester.js",
+    "test:query-group-commands": "npm run build && node build/test/command_test/query_group_command_tester.js",
+    "test:report-gen-commands": "npm run build && node build/test/command_test/report_gen_command_tester.js",
+    "test:reports-commands": "npm run build && node build/test/command_test/reports_command_tester.js",
+    "test:role-commands": "npm run build && node build/test/command_test/role_command_tester.js",
+    "test:rule-commands": "npm run build && node build/test/command_test/rule_command_tester.js",
+    "test:schedule-commands": "npm run build && node build/test/command_test/schedule_command_tester.js",
+    "test:server-commands": "npm run build && node build/test/command_test/server_command_tester.js",
+    "test:ssl-key-group-commands": "npm run build && node build/test/command_test/ssl_key_group_command_tester.js",
+    "test:static-masking-commands": "npm run build && node build/test/command_test/static_masking_command_tester.js",
+    "test:subscriber-commands": "npm run build && node build/test/command_test/subscriber_command_tester.js",
+    "test:tag-commands": "npm run build && node build/test/command_test/tag_command_tester.js",
+    "test:misc-commands": "npm run build && node build/test/command_test/misc_command_tester.js"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^0.6.0",
+    "zod": "^3.25.36"
+  },
+  "devDependencies": {
+    "@types/mocha": "^10.0.10",
+    "@types/node": "^20.17.52",
+    "mocha": "^11.4.0",
+    "typescript": "^5.8.3"
+  }
+}

@@ -1,0 +1,78 @@
+[
+  {
+    "description": "query_group_add: valid",
+    "toolName": "query_group_add",
+    "inputArgs": {
+      "name": "AdminQueries"
+    },
+    "expectedCliParams": ["-name AdminQueries"]
+  },
+  {
+    "description": "query_group_add_query: valid, simple SQL",
+    "toolName": "query_group_add_query",
+    "inputArgs": {
+      "name": "AdminQueries",
+      "sql": "SELECT * FROM users"
+    },
+    "expectedCliParams": ["-name AdminQueries", "-sql \"SELECT * FROM users\""]
+  },
+  {
+    "description": "query_group_add_query: valid, SQL with special chars (though quoting handles it)",
+    "toolName": "query_group_add_query",
+    "inputArgs": {
+      "name": "AdminQueries",
+      "sql": "SELECT name, value FROM config WHERE section = 'network';"
+    },
+    "expectedCliParams": ["-name AdminQueries", "-sql \"SELECT name, value FROM config WHERE section = 'network';\""]
+  },
+  {
+    "description": "query_group_update: valid",
+    "toolName": "query_group_update",
+    "inputArgs": {
+      "name": "AdminQueries",
+      "newName": "PrivilegedQueries"
+    },
+    "expectedCliParams": ["-name AdminQueries", "-newName PrivilegedQueries"]
+  },
+  {
+    "description": "query_group_update_query: valid",
+    "toolName": "query_group_update_query",
+    "inputArgs": {
+      "name": "PrivilegedQueries",
+      "sql": "SELECT * FROM users",
+      "newSql": "SELECT id, username, email FROM users WHERE is_active = true"
+    },
+    "expectedCliParams": ["-name PrivilegedQueries", "-sql \"SELECT * FROM users\"", "-newSql \"SELECT id, username, email FROM users WHERE is_active = true\""]
+  },
+  {
+    "description": "query_group_show_all: valid",
+    "toolName": "query_group_show_all",
+    "inputArgs": {},
+    "expectedCliParams": []
+  },
+  {
+    "description": "query_group_show_one: valid",
+    "toolName": "query_group_show_one",
+    "inputArgs": {
+      "name": "PrivilegedQueries"
+    },
+    "expectedCliParams": ["-name PrivilegedQueries"]
+  },
+  {
+    "description": "query_group_delete_query: valid",
+    "toolName": "query_group_delete_query",
+    "inputArgs": {
+      "name": "PrivilegedQueries",
+      "sql": "SELECT name, value FROM config WHERE section = 'network';"
+    },
+    "expectedCliParams": ["-name PrivilegedQueries", "-sql \"SELECT name, value FROM config WHERE section = 'network';\""]
+  },
+  {
+    "description": "query_group_delete: valid",
+    "toolName": "query_group_delete",
+    "inputArgs": {
+      "name": "PrivilegedQueries"
+    },
+    "expectedCliParams": ["-name PrivilegedQueries"]
+  }
+]

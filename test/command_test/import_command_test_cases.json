@@ -1,0 +1,34 @@
+[
+  {
+    "description": "import_users: valid",
+    "toolName": "import_users",
+    "inputArgs": {
+      "fileName": "/path/to/users.csv"
+    },
+    "expectedCliParams": ["-fileName /path/to/users.csv"]
+  },
+  {
+    "description": "import_users: valid, filename with spaces",
+    "toolName": "import_users",
+    "inputArgs": {
+      "fileName": "/path/to/my users.csv"
+    },
+    "expectedCliParams": ["-fileName \"/path/to/my users.csv\""]
+  },
+  {
+    "description": "import_hosts: valid",
+    "toolName": "import_hosts",
+    "inputArgs": {
+      "fileName": "data/hosts_to_import.csv"
+    },
+    "expectedCliParams": ["-fileName data/hosts_to_import.csv"]
+  },
+  {
+    "description": "import_apps: valid",
+    "toolName": "import_apps",
+    "inputArgs": {
+      "fileName": "./applications.csv"
+    },
+    "expectedCliParams": ["-fileName ./applications.csv"]
+  }
+]

@@ -1,0 +1,8 @@
+{
+  "connect_host": "127.0.0.1",
+  "connect_port": "11000",
+  "connect_protocol": "https",
+  "connect_login": "admin",
+  "connect_password": "password",
+  "core_status_dsServer": "ds-server-1"
+}

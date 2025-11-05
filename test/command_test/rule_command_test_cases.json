@@ -1,0 +1,159 @@
+[
+  {
+    "description": "rule_add_audit: minimal valid",
+    "toolName": "rule_add_audit",
+    "inputArgs": {
+      "name": "MinimalAuditRule"
+    },
+    "expectedCliParams": ["-name MinimalAuditRule", "-enable", "-logInStorage", "-action audit", "-filterType object"],
+    "absentCliParams": ["-checkNextRule", "-logData", "-depersQueries", "-logBindVariables"]
+  },
+  {
+    "description": "rule_add_audit: with common and SQL filtering params",
+    "toolName": "rule_add_audit",
+    "inputArgs": {
+      "name": "DetailedAudit_SELECT_on_HR",
+      "dbType": "ORACLE",
+      "instance": "OraclePROD",
+      "addUsers": "scott,hr_mgr",
+      "intercSqlSelect": true,
+      "intercTab": "HR.EMPLOYEES,HR.SALARIES",
+      "logData": true,
+      "logMaxRowCount": "100"
+    },
+    "expectedCliParams": [
+      "-name DetailedAudit_SELECT_on_HR",
+      "-dbType ORACLE",
+      "-instance OraclePROD",
+      "-addUsers \"scott,hr_mgr\"",
+      "-enable",
+      "-logInStorage",
+      "-action audit",
+      "-filterType object",
+      "-logData",
+      "-logMaxRowCount 100",
+      "-intercSqlSelect",
+      "-intercTab \"HR.EMPLOYEES,HR.SALARIES\""
+    ],
+    "absentCliParams": ["-checkNextRule", "-depersQueries", "-logBindVariables", "-intercSqlInsert"]
+  },
+  {
+    "description": "rule_add_audit: DDL filter type",
+    "toolName": "rule_add_audit",
+    "inputArgs": {
+      "name": "Audit_CREATE_TABLE",
+      "filterType": "ddl",
+      "ddlTypes": "CREATE_TABLE,ALTER_TABLE"
+    },
+    "expectedCliParams": ["-name Audit_CREATE_TABLE", "-enable", "-logInStorage", "-action audit", "-filterType ddl", "-ddlTypes \"CREATE_TABLE,ALTER_TABLE\""]
+  },
+  {
+    "description": "rule_add_masking: valid",
+    "toolName": "rule_add_masking",
+    "inputArgs": {
+      "name": "Mask_SSN_Employees",
+      "instance": "OraclePROD",
+      "maskColumns": "HR.EMPLOYEES.SSN",
+      "maskType": "maskFirstLast", 
+      "addUsers": "analyst_user"
+    },
+    "expectedCliParams": [
+      "-name Mask_SSN_Employees",
+      "-instance OraclePROD",
+      "-maskColumns HR.EMPLOYEES.SSN",
+      "-maskType maskFirstLast",
+      "-addUsers analyst_user",
+      "-enable",
+      "-logInStorage"
+    ],
+    "absentCliParams": ["-maskSelectOnly", "-keepRowCount"]
+  },
+  {
+    "description": "rule_add_security: block specific DML",
+    "toolName": "rule_add_security",
+    "inputArgs": {
+      "name": "Block_DELETE_FINANCE_TABLES",
+      "instance": "MSSQL_Finance",
+      "action": "Block",
+      "blockType": "SQLError",
+      "blockMsg": "DELETE operations on financial tables are prohibited.",
+      "intercSqlDelete": true,
+      "intercObjGr": "FinancialCriticalTables"
+    },
+    "expectedCliParams": [
+      "-name Block_DELETE_FINANCE_TABLES",
+      "-instance MSSQL_Finance",
+      "-action Block",
+      "-blockType SQLError",
+      "-blockMsg \"DELETE operations on financial tables are prohibited.\"",
+      "-enable",
+      "-logInStorage",
+      "-filterType object",
+      "-intercSqlDelete",
+      "-intercObjGr FinancialCriticalTables"
+    ]
+  },
+  {
+    "description": "rule_add_learning: minimal valid",
+    "toolName": "rule_add_learning",
+    "inputArgs": {
+      "name": "Learn_AppX_Activity"
+    },
+    "expectedCliParams": ["-name Learn_AppX_Activity", "-enable", "-logInStorage", "-action Learn"]
+  },
+  {
+    "description": "rule_add_external_dispatcher: valid",
+    "toolName": "rule_add_external_dispatcher",
+    "inputArgs": {
+      "name": "Dispatch_SecurityEvents_To_SIEM",
+      "sysLogGr": "SIEM_CEF_Group",
+      "intercSqlInsert": true, 
+      "intercSqlUpdate": true,
+      "intercSqlDelete": true
+    },
+    "expectedCliParams": [
+      "-name Dispatch_SecurityEvents_To_SIEM",
+      "-sysLogGr SIEM_CEF_Group",
+      "-enable",
+      "-logInStorage",
+      "-action yes",
+      "-filterType object",
+      "-intercSqlInsert",
+      "-intercSqlUpdate",
+      "-intercSqlDelete"
+    ]
+  },
+  {
+    "description": "rule_update_audit: change action and enable status",
+    "toolName": "rule_update_audit",
+    "inputArgs": {
+      "name": "MinimalAuditRule",
+      "enable": false,
+      "action": "skip"
+    },
+    "expectedCliParams": ["-name MinimalAuditRule", "-action skip"],
+    "absentCliParams": ["-enable"] 
+  },
+  {
+    "description": "rule_show_all: valid",
+    "toolName": "rule_show_all",
+    "inputArgs": {},
+    "expectedCliParams": []
+  },
+  {
+    "description": "rule_show_one: valid",
+    "toolName": "rule_show_one",
+    "inputArgs": {
+      "name": "DetailedAudit_SELECT_on_HR"
+    },
+    "expectedCliParams": ["-name DetailedAudit_SELECT_on_HR"]
+  },
+  {
+    "description": "rule_delete: valid",
+    "toolName": "rule_delete",
+    "inputArgs": {
+      "name": "MinimalAuditRule"
+    },
+    "expectedCliParams": ["-name MinimalAuditRule"]
+  }
+]

@@ -1,0 +1,93 @@
+[
+  {
+    "description": "server_add_smtp: valid, minimal",
+    "toolName": "server_add_smtp",
+    "inputArgs": {
+      "name": "PrimarySMTP",
+      "host": "smtp.example.com",
+      "port": "587",
+      "mailFrom": "noreply@example.com"
+    },
+    "expectedCliParams": ["-name PrimarySMTP", "-host smtp.example.com", "-port 587", "-mailFrom noreply@example.com", "-certificate"],
+    "implicitCliParams": ["-serverType SMTP"] 
+  },
+  {
+    "description": "server_add_smtp: valid, with auth and no certificate",
+    "toolName": "server_add_smtp",
+    "inputArgs": {
+      "name": "SecondarySMTP",
+      "host": "mail.internal.corp",
+      "port": "25",
+      "mailFrom": "alerts@internal.corp",
+      "login": "smtp_user",
+      "password": "smtp_password",
+      "certificate": false
+    },
+    "expectedCliParams": ["-name SecondarySMTP", "-host mail.internal.corp", "-port 25", "-mailFrom alerts@internal.corp", "-login smtp_user", "-password smtp_password"],
+    "absentCliParams": ["-certificate"],
+    "implicitCliParams": ["-serverType SMTP"]
+  },
+  {
+    "description": "server_add_snmp: valid, minimal",
+    "toolName": "server_add_snmp",
+    "inputArgs": {
+      "name": "MainSNMPTrap",
+      "host": "snmp-receiver.example.com",
+      "port": "162"
+    },
+    "expectedCliParams": ["-name MainSNMPTrap", "-host snmp-receiver.example.com", "-port 162"],
+    "implicitCliParams": ["-serverType SNMP"]
+  },
+  {
+    "description": "server_add_snmp: valid, with community string",
+    "toolName": "server_add_snmp",
+    "inputArgs": {
+      "name": "LegacySNMP",
+      "host": "10.0.0.50",
+      "port": "162",
+      "login": "public" 
+    },
+    "expectedCliParams": ["-name LegacySNMP", "-host 10.0.0.50", "-port 162", "-login public"],
+    "implicitCliParams": ["-serverType SNMP"]
+  },
+  {
+    "description": "server_update: valid, new name and host",
+    "toolName": "server_update",
+    "inputArgs": {
+      "name": "PrimarySMTP",
+      "newName": "PrimaryEmailGateway",
+      "host": "new.smtp.example.com"
+    },
+    "expectedCliParams": ["-name PrimarySMTP", "-newName PrimaryEmailGateway", "-host new.smtp.example.com"]
+  },
+  {
+    "description": "server_show_all: valid",
+    "toolName": "server_show_all",
+    "inputArgs": {},
+    "expectedCliParams": []
+  },
+  {
+    "description": "server_show_one: valid",
+    "toolName": "server_show_one",
+    "inputArgs": {
+      "name": "PrimaryEmailGateway"
+    },
+    "expectedCliParams": ["-name PrimaryEmailGateway"]
+  },
+  {
+    "description": "server_delete_by_name: valid",
+    "toolName": "server_delete_by_name",
+    "inputArgs": {
+      "name": "LegacySNMP"
+    },
+    "expectedCliParams": ["-name LegacySNMP"]
+  },
+  {
+    "description": "server_delete_by_id: valid",
+    "toolName": "server_delete_by_id",
+    "inputArgs": {
+      "id": "server-001" 
+    },
+    "expectedCliParams": ["-id server-001"]
+  }
+]

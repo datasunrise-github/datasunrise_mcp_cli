@@ -1,0 +1,42 @@
+// 20190513163658
+// https://www.datasunrise.com/documents/CLI_stat_mask_example.json
+
+[
+  {
+    "name": "<source_database_name>",
+    "targetName": "<target_database_name>",
+    "schemas": [
+      {
+        "name": "<source_schema_name>",
+        "targetName": "<target_schema_name>",
+        "tables": [
+          {
+            "name": "<1_table_name>",
+            "columns": [
+              {
+                "name": "<1_column_name>",
+                "maskType": "bankCard"
+              },
+              {
+                "name": "<2_column_name>",
+                "fixedVal": 555,
+                "maskType": "fixedNum"
+              }
+            ]
+          },
+          {
+            "name": "<2_table_name>",
+            "columns": [
+              {
+                "name": "<1_column_name>",
+                "maskType": "rndDateTime",
+                "startDate": "2017-11-30 23:59:59",
+                "endDate": "2019-11-30 23:59:59"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+]

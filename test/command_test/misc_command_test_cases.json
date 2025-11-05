@@ -1,0 +1,104 @@
+[
+  {
+    "description": "Add SSO Service - SAML",
+    "toolName": "misc_add_sso_service",
+    "inputArgs": {
+      "name": "TestSAML",
+      "type": "SAML",
+      "action": "Create a New User",
+      "role": "Admin"
+    },
+    "expectedCliParams": [
+      "addSsoService",
+      "-name TestSAML",
+      "-type SAML",
+      "-action \"Create a New User\"",
+      "-role Admin"
+    ]
+  },
+  {
+    "description": "Add SSO Service - OpenID Connect",
+    "toolName": "misc_add_sso_service",
+    "inputArgs": {
+      "name": "TestOIDC",
+      "type": "OpenID Connect",
+      "OIDCClientID": "test-client-id",
+      "OIDCClientSecret": "test-client-secret"
+    },
+    "expectedCliParams": [
+      "addSsoService",
+      "-name TestOIDC",
+      "-type \"OpenID Connect\"",
+      "-OIDCClientID test-client-id",
+      "-OIDCClientSecret test-client-secret"
+    ]
+  },
+  {
+    "description": "Add SSO Service - Full SAML Configuration",
+    "toolName": "misc_add_sso_service",
+    "inputArgs": {
+      "name": "FullSAMLTest",
+      "type": "SAML",
+      "action": "Deny Access",
+      "entityID": "my-saml-entity",
+      "assertionConsumeServiceEndpoint": "https://my.app/saml/consume",
+      "singleLogoutEndpoint": "https://my.app/saml/logout",
+      "nameIDFormat": "urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress",
+      "dontSignAuthenticationofRequests": "true",
+      "dontCheckSignedAssertions": "false",
+      "privateKeyForSignSAMLMessages": "/path/to/private.key",
+      "x509CertificateForVerifySAMLMessages": "/path/to/cert.pem",
+      "xmlMetadata": "/path/to/metadata.xml",
+      "dSUserNameAttr": "uid",
+      "spMetadataValidUntil": "2025-12-31"
+    },
+    "expectedCliParams": [
+      "addSsoService",
+      "-name FullSAMLTest",
+      "-type SAML",
+      "-action \"Deny Access\"",
+      "-entityID my-saml-entity",
+      "-assertionConsumeServiceEndpoint https://my.app/saml/consume",
+      "-singleLogoutEndpoint https://my.app/saml/logout",
+      "-nameIDFormat urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress",
+      "-dontSignAuthenticationofRequests true",
+      "-dontCheckSignedAssertions false",
+      "-privateKeyForSignSAMLMessages /path/to/private.key",
+      "-x509CertificateForVerifySAMLMessages /path/to/cert.pem",
+      "-xmlMetadata /path/to/metadata.xml",
+      "-dSUserNameAttr uid",
+      "-spMetadataValidUntil 2025-12-31"
+    ]
+  },
+  {
+    "description": "Add SSO Service - Full OpenID Connect Configuration",
+    "toolName": "misc_add_sso_service",
+    "inputArgs": {
+      "name": "FullOIDCTest",
+      "type": "OpenID Connect",
+      "action": "Create or Update User Based on Response",
+      "OIDCClientID": "oidc-client-123",
+      "OIDCClientSecret": "supersecret",
+      "tokenEndpointURL": "https://my.oidc/token",
+      "tokenKeysEndpointURL": "https://my.oidc/keys",
+      "authorizationTokenEndpointURL": "https://my.oidc/auth",
+      "endpoint": "https://my.oidc/.well-known/openid-configuration",
+      "setEndpointsManually": "true",
+      "dSUserNameAttr": "email"
+    },
+    "expectedCliParams": [
+      "addSsoService",
+      "-name FullOIDCTest",
+      "-type \"OpenID Connect\"",
+      "-action \"Create or Update User Based on Response\"",
+      "-OIDCClientID oidc-client-123",
+      "-OIDCClientSecret supersecret",
+      "-tokenEndpointURL https://my.oidc/token",
+      "-tokenKeysEndpointURL https://my.oidc/keys",
+      "-authorizationTokenEndpointURL https://my.oidc/auth",
+      "-endpoint https://my.oidc/.well-known/openid-configuration",
+      "-setEndpointsManually true",
+      "-dSUserNameAttr email"
+    ]
+  }
+]

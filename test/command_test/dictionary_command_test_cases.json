@@ -1,0 +1,37 @@
+[
+  {
+    "description": "dictionary_backup_create: valid (no params)",
+    "toolName": "dictionary_backup_create",
+    "inputArgs": {},
+    "expectedCliParams": []
+  },
+  {
+    "description": "dictionary_backup_show_all: valid (no params)",
+    "toolName": "dictionary_backup_show_all",
+    "inputArgs": {},
+    "expectedCliParams": []
+  },
+  {
+    "description": "dictionary_clean: valid, force default (true)",
+    "toolName": "dictionary_clean",
+    "inputArgs": {},
+    "expectedCliParams": ["-f"]
+  },
+  {
+    "description": "dictionary_clean: valid, force explicitly false",
+    "toolName": "dictionary_clean",
+    "inputArgs": {
+      "force": false
+    },
+    "expectedCliParams": [],
+    "absentCliParams": ["-f"]
+  },
+  {
+    "description": "dictionary_recover: valid",
+    "toolName": "dictionary_recover",
+    "inputArgs": {
+      "id": "backup_2023-10-26_10-00-00"
+    },
+    "expectedCliParams": ["-id backup_2023-10-26_10-00-00"]
+  }
+]

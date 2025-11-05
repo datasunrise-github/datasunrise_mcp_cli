@@ -1,0 +1,41 @@
+[
+  {
+    "description": "ssl_key_group_add: valid",
+    "toolName": "ssl_key_group_add",
+    "inputArgs": {
+      "name": "WebServerCerts"
+    },
+    "expectedCliParams": ["-name WebServerCerts"]
+  },
+  {
+    "description": "ssl_key_group_update: valid",
+    "toolName": "ssl_key_group_update",
+    "inputArgs": {
+      "name": "WebServerCerts",
+      "newName": "WebServerCertificates2024"
+    },
+    "expectedCliParams": ["-name WebServerCerts", "-newName WebServerCertificates2024"]
+  },
+  {
+    "description": "ssl_key_group_show_all: valid",
+    "toolName": "ssl_key_group_show_all",
+    "inputArgs": {},
+    "expectedCliParams": []
+  },
+  {
+    "description": "ssl_key_group_show_one: valid",
+    "toolName": "ssl_key_group_show_one",
+    "inputArgs": {
+      "name": "WebServerCertificates2024"
+    },
+    "expectedCliParams": ["-name WebServerCertificates2024"]
+  },
+  {
+    "description": "ssl_key_group_delete: valid",
+    "toolName": "ssl_key_group_delete",
+    "inputArgs": {
+      "name": "WebServerCertificates2024"
+    },
+    "expectedCliParams": ["-name WebServerCertificates2024"]
+  }
+]

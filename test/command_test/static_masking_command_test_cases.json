@@ -1,0 +1,46 @@
+[
+  {
+    "description": "static_masking_start: valid",
+    "toolName": "static_masking_start",
+    "inputArgs": {
+      "sourceInstance": "OraclePROD",
+      "targetInstance": "OracleDEV_Masked",
+      "tableFile": "/opt/datamasking/config/hr_tables.json"
+    },
+    "expectedCliParams": ["-sourceInstance OraclePROD", "-targetInstance OracleDEV_Masked", "-tableFile \"/opt/datamasking/config/hr_tables.json\""]
+  },
+  {
+    "description": "static_masking_start: valid, relative path with spaces in filename",
+    "toolName": "static_masking_start",
+    "inputArgs": {
+      "sourceInstance": "MySQL_Source",
+      "targetInstance": "MySQL_Target_Masked",
+      "tableFile": "./masking configs/finance_tables.json"
+    },
+    "expectedCliParams": ["-sourceInstance MySQL_Source", "-targetInstance MySQL_Target_Masked", "-tableFile \"./masking configs/finance_tables.json\""]
+  },
+  {
+    "description": "static_masking_show_status: valid, string ID",
+    "toolName": "static_masking_show_status",
+    "inputArgs": {
+      "id": "maskingjob-20230521-001"
+    },
+    "expectedCliParams": ["-id maskingjob-20230521-001"]
+  },
+  {
+    "description": "static_masking_show_status: valid, numeric-like string ID",
+    "toolName": "static_masking_show_status",
+    "inputArgs": {
+      "id": "12345" 
+    },
+    "expectedCliParams": ["-id 12345"]
+  },
+  {
+    "description": "static_masking_restart: valid, string ID",
+    "toolName": "static_masking_restart",
+    "inputArgs": {
+      "id": "maskingjob-20230520-005-failed"
+    },
+    "expectedCliParams": ["-id maskingjob-20230520-005-failed"]
+  }
+]

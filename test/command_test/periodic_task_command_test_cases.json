@@ -1,0 +1,163 @@
+[
+  {
+    "description": "periodic_task_add_clean_audit: valid",
+    "toolName": "periodic_task_add_clean_audit",
+    "inputArgs": {
+      "name": "DailyAuditClean"
+    },
+    "expectedCliParams": ["-name DailyAuditClean"]
+  },
+  {
+    "description": "periodic_task_add_backup_dictionary: valid",
+    "toolName": "periodic_task_add_backup_dictionary",
+    "inputArgs": {
+      "name": "WeeklyDictBackup",
+      "backupName": "dictionary_weekly_backup"
+    },
+    "expectedCliParams": ["-name WeeklyDictBackup", "-backupName dictionary_weekly_backup"]
+  },
+  {
+    "description": "periodic_task_add_user_behavior: valid",
+    "toolName": "periodic_task_add_user_behavior",
+    "inputArgs": {
+      "name": "MonthlyUserBehavior",
+      "trStartDate": "2023-01-01",
+      "trEndDate": "2023-01-31"
+    },
+    "expectedCliParams": ["-name MonthlyUserBehavior", "-trStartDate 2023-01-01", "-trEndDate 2023-01-31"]
+  },
+  {
+    "description": "periodic_task_add_ddl_table_relation_learning: valid, minimal",
+    "toolName": "periodic_task_add_ddl_table_relation_learning",
+    "inputArgs": {
+      "name": "DDL_Learn_Oracle",
+      "inst": "OraclePROD",
+      "tableRel": "HR_Schema_Relations"
+    },
+    "expectedCliParams": ["-name DDL_Learn_Oracle", "-instance OraclePROD", "-tableRel HR_Schema_Relations"],
+    "absentCliParams": ["-analyzeProcAndFunc", "-analyzeView", "-login", "-password", "-sysDba"]
+  },
+  {
+    "description": "periodic_task_add_ddl_table_relation_learning: valid, with booleans and credentials",
+    "toolName": "periodic_task_add_ddl_table_relation_learning",
+    "inputArgs": {
+      "name": "DDL_Learn_Full_PG",
+      "inst": "PostgresDEV",
+      "tableRel": "Sales_Relations",
+      "analyzeProcAndFunc": true,
+      "analyzeView": true,
+      "login": "ddl_user",
+      "password": "ddl_password"
+    },
+    "expectedCliParams": [
+      "-name DDL_Learn_Full_PG", 
+      "-instance PostgresDEV", 
+      "-tableRel Sales_Relations", 
+      "-analyzeProcAndFunc", 
+      "-analyzeView",
+      "-login ddl_user",
+      "-password ddl_password"
+    ],
+    "absentCliParams": ["-sysDba"]
+  },
+  {
+    "description": "periodic_task_add_vulnerability_assessment: valid",
+    "toolName": "periodic_task_add_vulnerability_assessment",
+    "inputArgs": {
+      "name": "Quarterly_VA_Scan"
+    },
+    "expectedCliParams": ["-name Quarterly_VA_Scan"]
+  },
+  {
+    "description": "periodic_task_add_update_metadata: valid",
+    "toolName": "periodic_task_add_update_metadata",
+    "inputArgs": {
+      "name": "NightlyMetadataUpdate_MSSQL",
+      "instance": "MSSQL_Reporting"
+    },
+    "expectedCliParams": ["-name NightlyMetadataUpdate_MSSQL", "-instance MSSQL_Reporting"]
+  },
+  {
+    "description": "periodic_task_add_data_discovery: valid",
+    "toolName": "periodic_task_add_data_discovery",
+    "inputArgs": {
+      "name": "PII_Discovery_FinanceDB",
+      "instance": "FinanceDB_01",
+      "searchByInfoTypes": "CreditCardNumbers,SSN"
+    },
+    "expectedCliParams": ["-name PII_Discovery_FinanceDB", "-instance FinanceDB_01", "-searchByInfoTypes \"CreditCardNumbers,SSN\""]
+  },
+  {
+    "description": "periodic_task_add_health_check: valid",
+    "toolName": "periodic_task_add_health_check",
+    "inputArgs": {
+      "name": "HourlyHealthCheck_CriticalDB",
+      "instance": "CriticalDB_Main"
+    },
+    "expectedCliParams": ["-name HourlyHealthCheck_CriticalDB", "-instance CriticalDB_Main"]
+  },
+  {
+    "description": "periodic_task_add_command_shell: valid",
+    "toolName": "periodic_task_add_command_shell",
+    "inputArgs": {
+      "name": "MyShellTask",
+      "command": "echo 'hello world'",
+      "disableOutput": "true"
+    },
+    "expectedCliParams": ["-name MyShellTask", "-command \"echo 'hello world'\"", "-disableOutput true"]
+  },
+  {
+    "description": "periodic_task_add_oracle_update_users_properties: valid",
+    "toolName": "periodic_task_add_oracle_update_users_properties",
+    "inputArgs": {
+      "name": "UpdateOracleUsers",
+      "instances": "Oracle1,Oracle2"
+    },
+    "expectedCliParams": ["-name UpdateOracleUsers", "-instances Oracle1,Oracle2"]
+  },
+  {
+    "description": "periodic_task_update_clean_audit: valid, new name",
+    "toolName": "periodic_task_update_clean_audit",
+    "inputArgs": {
+      "name": "DailyAuditClean",
+      "newName": "DailyAuditPurge"
+    },
+    "expectedCliParams": ["-name DailyAuditClean", "-newName DailyAuditPurge"]
+  },
+  {
+    "description": "periodic_task_show_one: valid",
+    "toolName": "periodic_task_show_one",
+    "inputArgs": {
+      "name": "DailyAuditPurge",
+      "taskType": "Clean Audit" 
+    },
+    "expectedCliParams": ["-name DailyAuditPurge", "-taskType \"Clean Audit\""]
+  },
+  {
+    "description": "periodic_task_delete: valid",
+    "toolName": "periodic_task_delete",
+    "inputArgs": {
+      "name": "Quarterly_VA_Scan",
+      "taskType": "Vulnerability Assessment"
+    },
+    "expectedCliParams": ["-name Quarterly_VA_Scan", "-taskType \"Vulnerability Assessment\""]
+  },
+  {
+    "description": "periodic_task_update_command_shell: valid",
+    "toolName": "periodic_task_update_command_shell",
+    "inputArgs": {
+      "name": "MyShellTask",
+      "newName": "MyNewShellTask"
+    },
+    "expectedCliParams": ["-name MyShellTask", "-newName MyNewShellTask"]
+  },
+  {
+    "description": "periodic_task_update_oracle_update_users_properties: valid",
+    "toolName": "periodic_task_update_oracle_update_users_properties",
+    "inputArgs": {
+      "name": "UpdateOracleUsers",
+      "newName": "UpdateOracleUsersNew"
+    },
+    "expectedCliParams": ["-name UpdateOracleUsers", "-newName UpdateOracleUsersNew"]
+  }
+]

@@ -1,0 +1,38 @@
+[
+  {
+    "description": "reports_show: valid, app audit",
+    "toolName": "reports_show",
+    "inputArgs": {
+      "reportType": "app",
+      "eventType": "a"
+    },
+    "expectedCliParams": ["-reportType app", "-eventType a"]
+  },
+  {
+    "description": "reports_show: valid, host masking",
+    "toolName": "reports_show",
+    "inputArgs": {
+      "reportType": "host",
+      "eventType": "m"
+    },
+    "expectedCliParams": ["-reportType host", "-eventType m"]
+  },
+  {
+    "description": "reports_show: valid, user security",
+    "toolName": "reports_show",
+    "inputArgs": {
+      "reportType": "user",
+      "eventType": "s"
+    },
+    "expectedCliParams": ["-reportType user", "-eventType s"]
+  },
+  {
+    "description": "reports_show: valid, ip audit",
+    "toolName": "reports_show",
+    "inputArgs": {
+      "reportType": "ip",
+      "eventType": "a"
+    },
+    "expectedCliParams": ["-reportType ip", "-eventType a"]
+  }
+]

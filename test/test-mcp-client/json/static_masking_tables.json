@@ -1,0 +1,24 @@
+[
+  {
+    "name": "u333_inttests_01",
+    "targetName": "u333_inttests_02",
+    "schemas": [
+      {
+        "name": "public",
+        "targetName": "public",
+        "tables": [
+          {
+            "name": "cmdline_test_stat_mask",
+            "columns": [
+              {
+                "name": "test_value",
+                "maskType": "maskFirst",
+                "maskCount": 7
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+]

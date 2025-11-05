@@ -1,0 +1,45 @@
+[
+  {
+    "description": "application_add: valid",
+    "toolName": "application_add",
+    "inputArgs": {
+      "name": "WebApp1"
+    },
+    "expectedCliParams": ["-name WebApp1"],
+    "absentCliParams": ["-newName"]
+  },
+  {
+    "description": "application_update: valid",
+    "toolName": "application_update",
+    "inputArgs": {
+      "name": "WebApp1",
+      "newName": "WebApp_Main"
+    },
+    "expectedCliParams": ["-name WebApp1", "-newName WebApp_Main"]
+  },
+  {
+    "description": "application_show_all: valid (no params)",
+    "toolName": "application_show_all",
+    "inputArgs": {},
+    "expectedCliParams": [],
+    "absentCliParams": ["-name", "-newName"]
+  },
+  {
+    "description": "application_show_one: valid",
+    "toolName": "application_show_one",
+    "inputArgs": {
+      "name": "WebApp_Main"
+    },
+    "expectedCliParams": ["-name WebApp_Main"],
+    "absentCliParams": ["-newName"]
+  },
+  {
+    "description": "application_delete: valid",
+    "toolName": "application_delete",
+    "inputArgs": {
+      "name": "WebApp_Main"
+    },
+    "expectedCliParams": ["-name WebApp_Main"],
+    "absentCliParams": ["-newName"]
+  }
+]

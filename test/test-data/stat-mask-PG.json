@@ -1,0 +1,28 @@
+[
+  {
+    "name": "smoke_test_margo",
+    "targetName": "smoke_test_margo_target",
+    "schemas": [
+      {
+        "name": "public",
+        "targetName": "public",
+        "tables": [
+          {
+            "name": "contacts",
+            "columns": [
+              {
+                "name": "email",
+                "maskType": "emailDefault"
+              },
+              {
+                "name": "phone",
+                "fixedVal": "555",
+                "maskType": "fixedStr"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+]

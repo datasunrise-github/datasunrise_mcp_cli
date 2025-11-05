@@ -1,0 +1,72 @@
+[
+  {
+    "description": "schedule_add: valid, single interval",
+    "toolName": "schedule_add",
+    "inputArgs": {
+      "name": "WorkHours",
+      "intervals": "mo=09:00:00-17:00:00"
+    },
+    "expectedCliParams": ["-name WorkHours", "-intervals \"mo=09:00:00-17:00:00\""]
+  },
+  {
+    "description": "schedule_add: valid, multiple intervals",
+    "toolName": "schedule_add",
+    "inputArgs": {
+      "name": "WeekendMaintenance",
+      "intervals": "sa=01:00:00-05:00:00;su=01:00:00-05:00:00"
+    },
+    "expectedCliParams": ["-name WeekendMaintenance", "-intervals \"sa=01:00:00-05:00:00;su=01:00:00-05:00:00\""]
+  },
+  {
+    "description": "schedule_update: valid, new name and intervals",
+    "toolName": "schedule_update",
+    "inputArgs": {
+      "name": "WorkHours",
+      "newName": "StandardWorkHours",
+      "intervals": "mo=08:30:00-17:30:00;tu=08:30:00-17:30:00;we=08:30:00-17:30:00;th=08:30:00-17:30:00;fr=08:30:00-16:00:00"
+    },
+    "expectedCliParams": ["-name WorkHours", "-newName StandardWorkHours", "-intervals \"mo=08:30:00-17:30:00;tu=08:30:00-17:30:00;we=08:30:00-17:30:00;th=08:30:00-17:30:00;fr=08:30:00-16:00:00\""]
+  },
+  {
+    "description": "schedule_update: valid, only new name",
+    "toolName": "schedule_update",
+    "inputArgs": {
+      "name": "WeekendMaintenance",
+      "newName": "OffPeakMaintenance"
+    },
+    "expectedCliParams": ["-name WeekendMaintenance", "-newName OffPeakMaintenance"],
+    "absentCliParams": ["-intervals"]
+  },
+  {
+    "description": "schedule_update: valid, only new intervals",
+    "toolName": "schedule_update",
+    "inputArgs": {
+      "name": "OffPeakMaintenance",
+      "intervals": "sa=00:00:00-06:00:00;su=00:00:00-06:00:00"
+    },
+    "expectedCliParams": ["-name OffPeakMaintenance", "-intervals \"sa=00:00:00-06:00:00;su=00:00:00-06:00:00\""],
+    "absentCliParams": ["-newName"]
+  },
+  {
+    "description": "schedule_show_all: valid",
+    "toolName": "schedule_show_all",
+    "inputArgs": {},
+    "expectedCliParams": []
+  },
+  {
+    "description": "schedule_show_one: valid",
+    "toolName": "schedule_show_one",
+    "inputArgs": {
+      "name": "StandardWorkHours"
+    },
+    "expectedCliParams": ["-name StandardWorkHours"]
+  },
+  {
+    "description": "schedule_delete: valid",
+    "toolName": "schedule_delete",
+    "inputArgs": {
+      "name": "OffPeakMaintenance"
+    },
+    "expectedCliParams": ["-name OffPeakMaintenance"]
+  }
+]

@@ -1,0 +1,74 @@
+[
+  {
+    "description": "core_start: valid, force default (true)",
+    "toolName": "core_start",
+    "inputArgs": {},
+    "expectedCliParams": ["-f"],
+    "absentCliParams": ["-dsServer", "-worker"]
+  },
+  {
+    "description": "core_start: valid, force explicitly true",
+    "toolName": "core_start",
+    "inputArgs": {
+      "force": true
+    },
+    "expectedCliParams": ["-f"]
+  },
+  {
+    "description": "core_start: valid, force explicitly false",
+    "toolName": "core_start",
+    "inputArgs": {
+      "force": false
+    },
+    "expectedCliParams": [],
+    "absentCliParams": ["-f"]
+  },
+  {
+    "description": "core_restart: valid, force default (true)",
+    "toolName": "core_restart",
+    "inputArgs": {},
+    "expectedCliParams": ["-f"]
+  },
+  {
+    "description": "core_restart: valid, force false",
+    "toolName": "core_restart",
+    "inputArgs": {
+      "force": false
+    },
+    "expectedCliParams": [],
+    "absentCliParams": ["-f"]
+  },
+  {
+    "description": "core_stop: valid, force default (true)",
+    "toolName": "core_stop",
+    "inputArgs": {},
+    "expectedCliParams": ["-f"]
+  },
+  {
+    "description": "core_stop: valid, force false",
+    "toolName": "core_stop",
+    "inputArgs": {
+      "force": false
+    },
+    "expectedCliParams": [],
+    "absentCliParams": ["-f"]
+  },
+  {
+    "description": "core_show_state: valid, worker default (1)",
+    "toolName": "core_show_state",
+    "inputArgs": {
+      "dsServer": "MainServer"
+    },
+    "expectedCliParams": ["-dsServer MainServer", "-worker 1"],
+    "absentCliParams": ["-f"]
+  },
+  {
+    "description": "core_show_state: valid, worker specified",
+    "toolName": "core_show_state",
+    "inputArgs": {
+      "dsServer": "BackupServer",
+      "worker": 2
+    },
+    "expectedCliParams": ["-dsServer BackupServer", "-worker 2"]
+  }
+]

@@ -1,0 +1,107 @@
+[
+  {
+    "description": "role_add_access: valid, minimal",
+    "toolName": "role_add_access",
+    "inputArgs": {
+      "name": "ReadOnlyRole"
+    },
+    "expectedCliParams": ["-name ReadOnlyRole"],
+    "absentCliParams": ["-groupDN"]
+  },
+  {
+    "description": "role_add_access: valid, with groupDN",
+    "toolName": "role_add_access",
+    "inputArgs": {
+      "name": "AD_Auditors",
+      "groupDN": "CN=Auditors,OU=SecurityGroups,DC=example,DC=com"
+    },
+    "expectedCliParams": ["-name AD_Auditors", "-groupDN \"CN=Auditors,OU=SecurityGroups,DC=example,DC=com\""]
+  },
+  {
+    "description": "role_update_access: valid, new name and groupDN",
+    "toolName": "role_update_access",
+    "inputArgs": {
+      "name": "ReadOnlyRole",
+      "newName": "ViewOnlyRole",
+      "groupDN": "CN=Viewers,OU=SecurityGroups,DC=example,DC=com"
+    },
+    "expectedCliParams": ["-name ReadOnlyRole", "-newName ViewOnlyRole", "-groupDN \"CN=Viewers,OU=SecurityGroups,DC=example,DC=com\""]
+  },
+  {
+    "description": "role_show_all_access: valid",
+    "toolName": "role_show_all_access",
+    "inputArgs": {},
+    "expectedCliParams": []
+  },
+  {
+    "description": "role_show_one_access: valid",
+    "toolName": "role_show_one_access",
+    "inputArgs": {
+      "name": "ViewOnlyRole"
+    },
+    "expectedCliParams": ["-name ViewOnlyRole"]
+  },
+  {
+    "description": "role_grant_all_permissions: valid",
+    "toolName": "role_grant_all_permissions",
+    "inputArgs": {
+      "name": "SuperAdminRole"
+    },
+    "expectedCliParams": ["-name SuperAdminRole"]
+  },
+  {
+    "description": "role_grant_permissions: valid, grant view and list",
+    "toolName": "role_grant_permissions",
+    "inputArgs": {
+      "name": "ViewOnlyRole",
+      "viewActions": "AuditEvents,SystemSettings",
+      "listActions": "Users,Instances"
+    },
+    "expectedCliParams": ["-name ViewOnlyRole", "-view \"AuditEvents,SystemSettings\"", "-list \"Users,Instances\""]
+  },
+  {
+    "description": "role_grant_permissions: valid, grant single permission type",
+    "toolName": "role_grant_permissions",
+    "inputArgs": {
+      "name": "OperatorRole",
+      "executeActions": "StartProxy,StopProxy,RestartCore"
+    },
+    "expectedCliParams": ["-name OperatorRole", "-execute \"StartProxy,StopProxy,RestartCore\""]
+  },
+  {
+    "description": "role_set_permissions: valid, set specific permissions",
+    "toolName": "role_set_permissions",
+    "inputArgs": {
+      "name": "AnalystRole",
+      "viewActions": "Reports,AuditData",
+      "listActions": "ReportGenerators"
+    },
+    "expectedCliParams": ["-name AnalystRole", "-view \"Reports,AuditData\"", "-list ReportGenerators"],
+    "absentCliParams": ["-delete", "-edit", "-insert", "-execute"]
+  },
+  {
+    "description": "role_revoke_all_permissions: valid",
+    "toolName": "role_revoke_all_permissions",
+    "inputArgs": {
+      "name": "OperatorRole"
+    },
+    "expectedCliParams": ["-name OperatorRole"]
+  },
+  {
+    "description": "role_revoke_permissions: valid, revoke some permissions",
+    "toolName": "role_revoke_permissions",
+    "inputArgs": {
+      "name": "AnalystRole",
+      "viewActions": "AuditData" 
+    },
+    "expectedCliParams": ["-name AnalystRole", "-view AuditData"]
+  },
+  {
+    "description": "role_delete_access: valid",
+    "toolName": "role_delete_access",
+    "inputArgs": {
+      "name": "ViewOnlyRole"
+    },
+    "expectedCliParams": ["-name ViewOnlyRole"]
+  }
+]

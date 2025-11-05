@@ -1,0 +1,10 @@
+[
+  {
+    "description": "connectOAuth2: valid",
+    "toolName": "connectOAuth2",
+    "inputArgs": {
+      "token": "my-token"
+    },
+    "expectedCliParams": ["-token my-token"]
+  }
+]

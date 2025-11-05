@@ -1,0 +1,17 @@
+[
+  {
+    "source_table": "public.users",
+    "target_table": "public.users_masked",
+    "columns": [
+      {
+        "name": "email",
+        "mask_type": "emailDefault"
+      },
+      {
+        "name": "phone_number",
+        "mask_type": "fixedStr",
+        "fixed_value": "N/A"
+      }
+    ]
+  }
+]

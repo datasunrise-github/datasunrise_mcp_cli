@@ -1,0 +1,167 @@
+[
+  {
+    "description": "db_user_add: valid, minimal",
+    "toolName": "db_user_add",
+    "inputArgs": {
+      "name": "john_doe"
+    },
+    "expectedCliParams": ["-name john_doe"],
+    "absentCliParams": ["-inst", "-dbType"]
+  },
+  {
+    "description": "db_user_add: valid, with instance and dbType",
+    "toolName": "db_user_add",
+    "inputArgs": {
+      "name": "jane_doe",
+      "inst": "OraclePROD",
+      "dbType": "ORACLE"
+    },
+    "expectedCliParams": ["-name jane_doe", "-inst OraclePROD", "-dbType ORACLE"]
+  },
+  {
+    "description": "db_user_group_add: valid, minimal",
+    "toolName": "db_user_group_add",
+    "inputArgs": {
+      "name": "DB_ADMINS"
+    },
+    "expectedCliParams": ["-name DB_ADMINS"],
+    "absentCliParams": ["-inst", "-dbType", "-addMembers"]
+  },
+  {
+    "description": "db_user_group_add: valid, with members and scope",
+    "toolName": "db_user_group_add",
+    "inputArgs": {
+      "name": "APP_USERS_PG",
+      "inst": "PostgresDEV",
+      "dbType": "POSTGRESQL",
+      "addMembers": "user1,user2,user3"
+    },
+    "expectedCliParams": ["-name APP_USERS_PG", "-inst PostgresDEV", "-dbType POSTGRESQL", "-addMembers user1,user2,user3"]
+  },
+  {
+    "description": "db_user_mapping_add: valid, with adLogin",
+    "toolName": "db_user_mapping_add",
+    "inputArgs": {
+      "inst": "OraclePROD",
+      "adLogin": "DOMAIN\\asmith",
+      "dbLogin": "APPSMITH",
+      "dbPassword": "securePassword123",
+      "ldapServer": "MainLDAP",
+      "hashType": "SHA-256"
+    },
+    "expectedCliParams": ["-inst OraclePROD", "-adLogin DOMAIN\\asmith", "-dbLogin APPSMITH", "-dbPassword securePassword123", "-ldapServer MainLDAP", "-hashType SHA-256"],
+    "absentCliParams": ["-adGroup", "-sysDba"]
+  },
+  {
+    "description": "db_user_mapping_add: valid, with adGroup and sysDba",
+    "toolName": "db_user_mapping_add",
+    "inputArgs": {
+      "inst": "OracleSYS",
+      "adGroup": "DOMAIN\\OracleDBAs",
+      "dbLogin": "SYSDBA_USER",
+      "dbPassword": "anotherPassword",
+      "hashType": "SHA-512",
+      "sysDba": true
+    },
+    "expectedCliParams": ["-inst OracleSYS", "-adGroup DOMAIN\\OracleDBAs", "-dbLogin SYSDBA_USER", "-dbPassword anotherPassword", "-hashType SHA-512", "-sysDba"],
+    "absentCliParams": ["-adLogin", "-ldapServer"]
+  },
+  {
+    "description": "ldap_server_add: valid, default true",
+    "toolName": "ldap_server_add",
+    "inputArgs": {
+      "name": "PrimaryLDAP",
+      "host": "ldap.example.com",
+      "port": "389",
+      "baseDn": "dc=example,dc=com"
+    },
+    "expectedCliParams": ["-name PrimaryLDAP", "-host ldap.example.com", "-port 389", "-default", "-baseDn dc=example,dc=com"]
+  },
+  {
+    "description": "ldap_server_add: valid, default false",
+    "toolName": "ldap_server_add",
+    "inputArgs": {
+      "name": "SecondaryLDAP",
+      "host": "ldap2.example.com",
+      "port": "636",
+      "default": false,
+      "baseDn": "ou=users,dc=example,dc=com"
+    },
+    "expectedCliParams": ["-name SecondaryLDAP", "-host ldap2.example.com", "-port 636", "-baseDn ou=users,dc=example,dc=com"],
+    "absentCliParams": ["-default"]
+  },
+  {
+    "description": "db_user_update: valid, only newName",
+    "toolName": "db_user_update",
+    "inputArgs": {
+      "name": "john_doe",
+      "newName": "johnathan_doe"
+    },
+    "expectedCliParams": ["-name john_doe", "-newName johnathan_doe"]
+  },
+  {
+    "description": "db_user_group_update: valid, add and remove members",
+    "toolName": "db_user_group_update",
+    "inputArgs": {
+      "name": "APP_USERS_PG",
+      "addMembers": "user4",
+      "removeMembers": "user1,user2"
+    },
+    "expectedCliParams": ["-name APP_USERS_PG", "-addMembers user4", "-removeMembers user1,user2"],
+    "absentCliParams": ["-newName"]
+  },
+  {
+    "description": "ldap_server_update: valid",
+    "toolName": "ldap_server_update",
+    "inputArgs": {
+      "name": "PrimaryLDAP",
+      "newName": "MainDomainLDAP"
+    },
+    "expectedCliParams": ["-name PrimaryLDAP", "-newName MainDomainLDAP"]
+  },
+  {
+    "description": "db_user_show_all: valid",
+    "toolName": "db_user_show_all",
+    "inputArgs": {},
+    "expectedCliParams": []
+  },
+  {
+    "description": "db_user_show_one: valid",
+    "toolName": "db_user_show_one",
+    "inputArgs": {"name": "jane_doe"},
+    "expectedCliParams": ["-name jane_doe"]
+  },
+  {
+    "description": "db_user_mapping_enable: valid, mapType default",
+    "toolName": "db_user_mapping_enable",
+    "inputArgs": {"instance": "OraclePROD"},
+    "expectedCliParams": ["-instance OraclePROD", "-mapType config"]
+  },
+  {
+    "description": "db_user_mapping_disable: valid",
+    "toolName": "db_user_mapping_disable",
+    "inputArgs": {"instance": "OraclePROD"},
+    "expectedCliParams": ["-instance OraclePROD"]
+  },
+  {
+    "description": "db_user_delete: valid",
+    "toolName": "db_user_delete",
+    "inputArgs": {"name": "johnathan_doe"},
+    "expectedCliParams": ["-name johnathan_doe"]
+  },
+  {
+    "description": "db_user_mapping_delete: valid",
+    "toolName": "db_user_mapping_delete",
+    "inputArgs": {
+      "instance": "OraclePROD",
+      "adLogin": "DOMAIN\\asmith"
+    },
+    "expectedCliParams": ["-instance OraclePROD", "-adLogin DOMAIN\\asmith"]
+  },
+  {
+    "description": "ldap_server_delete: valid",
+    "toolName": "ldap_server_delete",
+    "inputArgs": {"name": "SecondaryLDAP"},
+    "expectedCliParams": ["-name SecondaryLDAP"]
+  }
+]
