@@ -93,7 +93,9 @@ The screenshot below shows an example of the MCP client requesting to execute th
 
 <details>
 <summary>DataSunrise MCP Server in Action</summary>
+    
 ![DataSunrise MCP Server in Action](img/mcp-in-action.png)
+
 </details>
 
 ### Important Tips
