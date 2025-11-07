@@ -1,0 +1,19 @@
+# Ignore build artifacts
+build/
+
+# Ignore node_modules
+node_modules/
+
+# Ignore .env files
+.env
+
+# Ignore log files
+*.log
+server.log
+
+# Ignore OS-generated files
+.DS_Store
+Thumbs.db
+
+# Ignore mcptools_test
+mcptools_test/
